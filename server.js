@@ -17,7 +17,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const saltRounds = 10;
-const jwtSecret = 'your_jwt_secret'; // Replace with a real secret in a production environment
+const jwtSecret = '7dfd6f9f6669113bdbb8373f886bb683d87801d81b5c32882375fcd9';
 
 // API routes
 app.post('/api/register', async (req, res) => {
