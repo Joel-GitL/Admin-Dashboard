@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Admin Dashboard</title>
+    <link rel="stylesheet" href="../css/auth.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="auth-header">
+                <i class='bx bx-store-alt'></i>
+                <h1>Welcome Back</h1>
+                <p>Please log in to continue</p>
+            </div>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                    <i class='bx bx-user'></i>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <i class='bx bx-lock-alt'></i>
+                </div>
+                <button type="submit" class="btn-auth">Login</button>
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="register.html">Register</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="../js/auth.js"></script>
+</body>
+</html>

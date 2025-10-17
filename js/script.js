@@ -8,6 +8,25 @@ if (menuBtn) {
     menuBtn.addEventListener('click', () => {
         sidebar.classList.toggle('close');
     });
+
+const logOutBtn = document.getElementById('log_out');
+
+if (logOutBtn) {
+    logOutBtn.addEventListener('click', async () => {
+        try {
+            const res = await fetch('/api/logout', { method: 'POST' });
+            const data = await res.json();
+            if (res.ok) {
+                window.location.href = '/html/login.html';
+            } else {
+                alert(data.message);
+            }
+        } catch (error) {
+            console.error('Logout error:', error);
+            alert('An error occurred during logout.');
+        }
+    });
+}
 }
 
 // Logout Functionality
