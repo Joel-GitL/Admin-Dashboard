@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorites - Admin Dashboard</title>
+    
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/favorites.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class='bx bx-cube-alt'></i>
+            <span class="logo_name">Admin</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="index.html">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link_name">Dashboard</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="index.html">Dashboard</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="products.html">
+                    <i class='bx bx-box'></i>
+                    <span class="link_name">Products</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="products.html">Products</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="orders.html">
+                    <i class='bx bx-shopping-bag'></i>
+                    <span class="link_name">Orders</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="orders.html">Orders</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="analytics.html">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="link_name">Analytics</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="analytics.html">Analytics</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="stock.html">
+                    <i class='bx bx-package'></i>
+                    <span class="link_name">Stock</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="stock.html">Stock</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="total-orders.html">
+                    <i class='bx bx-receipt'></i>
+                    <span class="link_name">Total Orders</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="total-orders.html">Total Orders</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="team.html">
+                    <i class='bx bx-user'></i>
+                    <span class="link_name">Team</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="team.html">Team</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="messages.html">
+                    <i class='bx bx-message'></i>
+                    <span class="link_name">Messages</span>
+                    <span class="badge">5</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="messages.html">Messages</a></li>
+                </ul>
+            </li>
+            <li class="active">
+                <a href="favorites.html">
+                    <i class='bx bx-heart'></i>
+                    <span class="link_name">Favorites</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="favorites.html">Favorites</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="settings.html">
+                    <i class='bx bx-cog'></i>
+                    <span class="link_name">Settings</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="settings.html">Settings</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="profile-details">
+            <div class="profile-content">
+                <img src="../images/profile.jpg" alt="profile">
+            </div>
+            <div class="name-job">
+                <div class="profile_name">Admin User</div>
+                <div class="job">Administrator</div>
+            </div>
+            <i class='bx bx-log-out' id="log_out"></i>
+        </div>
+    </div>
+
+    <!-- Home Section -->
+    <section class="home-section">
+        <div class="home-content">
+            <i class='bx bx-menu'></i>
+            <span class="text">Favorites</span>
+            <div class="breadcrumb">
+                <a href="index.html"><i class='bx bx-home'></i> Home</a>
+                <span>/</span>
+                <span>Favorites</span>
+            </div>
+        </div>
+
+        <!-- Main Container -->
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="header-left">
+                    <h2>My Favorites</h2>
+                    <p>Saved items for quick access</p>
+                </div>
+                <div class="header-right">
+                    <button class="btn-secondary" id="clearAllBtn">
+                        <i class='bx bx-trash'></i>
+                        Clear All
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filter Bar -->
+            <div class="filter-bar">
+                <div class="filter-left">
+                    <div class="search-box">
+                        <i class='bx bx-search'></i>
+                        <input type="text" id="searchFavorites" placeholder="Search favorites...">
+                    </div>
+                    <select class="filter-select" id="typeFilter">
+                        <option value="">All Types</option>
+                        <option value="product">Products</option>
+                        <option value="order">Orders</option>
+                    </select>
+                    <select class="filter-select" id="sortBy">
+                        <option value="recent">Recently Added</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="name">Name (A-Z)</option>
+                        <option value="price-high">Price (High to Low)</option>
+                        <option value="price-low">Price (Low to High)</option>
+                    </select>
+                </div>
+                <div class="filter-right">
+                    <span class="items-count" id="itemsCount">0 items</span>
+                </div>
+            </div>
+
+            <!-- Favorites Grid -->
+            <div class="favorites-grid" id="favoritesGrid">
+                <!-- Favorites will be dynamically loaded here -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <i class='bx bx-heart'></i>
+                <h3>No Favorites Yet</h3>
+                <p>Items you favorite will appear here for quick access</p>
+                <a href="products.html" class="btn-primary">
+                    <i class='bx bx-plus'></i>
+                    Browse Products
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- View Details Modal -->
+    <div class="modal" id="detailsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Item Details</h3>
+                <button class="close-modal">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="../js/favorites.js"></script>
+</body>
+</html>
+

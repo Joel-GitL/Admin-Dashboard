@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Admin Dashboard</title>
+    
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/settings.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class='bx bx-cube-alt'></i>
+            <span class="logo_name">Admin</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="index.html">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link_name">Dashboard</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="index.html">Dashboard</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="products.html">
+                    <i class='bx bx-box'></i>
+                    <span class="link_name">Products</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="products.html">Products</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="orders.html">
+                    <i class='bx bx-shopping-bag'></i>
+                    <span class="link_name">Orders</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="orders.html">Orders</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="analytics.html">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="link_name">Analytics</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="analytics.html">Analytics</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="stock.html">
+                    <i class='bx bx-package'></i>
+                    <span class="link_name">Stock</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="stock.html">Stock</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="total-orders.html">
+                    <i class='bx bx-receipt'></i>
+                    <span class="link_name">Total Orders</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="total-orders.html">Total Orders</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="team.html">
+                    <i class='bx bx-user'></i>
+                    <span class="link_name">Team</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="team.html">Team</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="messages.html">
+                    <i class='bx bx-message'></i>
+                    <span class="link_name">Messages</span>
+                    <span class="badge">5</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="messages.html">Messages</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="favorites.html">
+                    <i class='bx bx-heart'></i>
+                    <span class="link_name">Favorites</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="favorites.html">Favorites</a></li>
+                </ul>
+            </li>
+            <li class="active">
+                <a href="settings.html">
+                    <i class='bx bx-cog'></i>
+                    <span class="link_name">Settings</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="settings.html">Settings</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="profile-details">
+            <div class="profile-content">
+                <img src="../images/profile.jpg" alt="profile">
+            </div>
+            <div class="name-job">
+                <div class="profile_name">Admin User</div>
+                <div class="job">Administrator</div>
+            </div>
+            <i class='bx bx-log-out' id="log_out"></i>
+        </div>
+    </div>
+
+    <!-- Home Section -->
+    <section class="home-section">
+        <div class="home-content">
+            <i class='bx bx-menu'></i>
+            <span class="text">Settings</span>
+            <div class="breadcrumb">
+                <a href="index.html"><i class='bx bx-home'></i> Home</a>
+                <span>/</span>
+                <span>Settings</span>
+            </div>
+        </div>
+
+        <!-- Main Container -->
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="header-left">
+                    <h2>Settings</h2>
+                    <p>Manage your account settings and preferences</p>
+                </div>
+            </div>
+
+            <!-- Settings Container -->
+            <div class="settings-container">
+                <!-- Settings Sidebar -->
+                <div class="settings-sidebar">
+                    <button class="settings-tab active" data-tab="profile">
+                        <i class='bx bx-user-circle'></i>
+                        <span>Profile</span>
+                    </button>
+                    <button class="settings-tab" data-tab="account">
+                        <i class='bx bx-lock-alt'></i>
+                        <span>Account</span>
+                    </button>
+                    <button class="settings-tab" data-tab="notifications">
+                        <i class='bx bx-bell'></i>
+                        <span>Notifications</span>
+                    </button>
+                    <button class="settings-tab" data-tab="security">
+                        <i class='bx bx-shield-quarter'></i>
+                        <span>Security</span>
+                    </button>
+                    <button class="settings-tab" data-tab="preferences">
+                        <i class='bx bx-cog'></i>
+                        <span>Preferences</span>
+                    </button>
+                </div>
+
+                <!-- Settings Content -->
+                <div class="settings-content">
+                    <!-- Profile Tab -->
+                    <div class="settings-panel active" id="profile-panel">
+                        <div class="panel-header">
+                            <h3>Profile Information</h3>
+                            <p>Update your profile details and photo</p>
+                        </div>
+
+                        <div class="profile-photo-section">
+                            <div class="photo-preview">
+                                <img src="../images/profile.jpg" alt="Profile" id="profileImage">
+                                <div class="photo-overlay">
+                                    <i class='bx bx-camera'></i>
+                                </div>
+                            </div>
+                            <div class="photo-actions">
+                                <h4>Profile Photo</h4>
+                                <p>Upload a new profile photo (JPG, PNG, max 5MB)</p>
+                                <div class="button-group">
+                                    <button class="btn-primary" id="uploadPhotoBtn">
+                                        <i class='bx bx-upload'></i>
+                                        Upload Photo
+                                    </button>
+                                    <button class="btn-secondary" id="removePhotoBtn">
+                                        <i class='bx bx-trash'></i>
+                                        Remove
+                                    </button>
+                                </div>
+                                <input type="file" id="photoInput" accept="image/*" style="display: none;">
+                            </div>
+                        </div>
+
+                        <form class="settings-form" id="profileForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" id="firstName" value="Admin" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" id="lastName" value="User" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" value="admin@company.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" value="+63 912 345 6789">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bio">Bio</label>
+                                <textarea id="bio" rows="4" placeholder="Tell us about yourself...">Administrator with 5+ years of experience in managing e-commerce platforms.</textarea>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="location">Location</label>
+                                    <input type="text" id="location" value="Manila, Philippines">
+                                </div>
+                                <div class="form-group">
+                                    <label for="website">Website</label>
+                                    <input type="url" id="website" value="https://Admin.com">
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary">Cancel</button>
+                                <button type="submit" class="btn-primary">
+                                    <i class='bx bx-check'></i>
+                                    Save Changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Account Tab -->
+                    <div class="settings-panel" id="account-panel">
+                        <div class="panel-header">
+                            <h3>Account Settings</h3>
+                            <p>Manage your account credentials and security</p>
+                        </div>
+
+                        <form class="settings-form" id="accountForm">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" value="admin_user" required>
+                                <small>Your unique username for login</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="currentPassword">Current Password</label>
+                                <div class="password-input">
+                                    <input type="password" id="currentPassword" placeholder="Enter current password">
+                                    <i class='bx bx-show toggle-password'></i>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="newPassword">New Password</label>
+                                <div class="password-input">
+                                    <input type="password" id="newPassword" placeholder="Enter new password">
+                                    <i class='bx bx-show toggle-password'></i>
+                                </div>
+                                <small>Must be at least 8 characters with letters, numbers and symbols</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm New Password</label>
+                                <div class="password-input">
+                                    <input type="password" id="confirmPassword" placeholder="Confirm new password">
+                                    <i class='bx bx-show toggle-password'></i>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary">Cancel</button>
+                                <button type="submit" class="btn-primary">
+                                    <i class='bx bx-check'></i>
+                                    Update Password
+                                </button>
+                            </div>
+                        </form>
+
+                        <div class="danger-zone">
+                            <h4>Danger Zone</h4>
+                            <p>Permanently delete your account and all data</p>
+                            <button class="btn-danger">
+                                <i class='bx bx-trash'></i>
+                                Delete Account
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Notifications Tab -->
+                    <div class="settings-panel" id="notifications-panel">
+                        <div class="panel-header">
+                            <h3>Notification Preferences</h3>
+                            <p>Choose how you want to be notified</p>
+                        </div>
+
+                        <div class="notification-section">
+                            <h4>Email Notifications</h4>
+                            <div class="toggle-list">
+                                <div class="toggle-item">
+                                    <div class="toggle-info">
+                                        <h5>Order Updates</h5>
+                                        <p>Receive emails about order status changes</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="toggle-item">
+                                    <div class="toggle-info">
+                                        <h5>Product Alerts</h5>
+                                        <p>Get notified about low stock and inventory updates</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="toggle-item">
+                                    <div class="toggle-info">
+                                        <h5>Team Activity</h5>
+                                        <p>Updates about team member actions and changes</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="toggle-item">
+                                    <div class="toggle-info">
+                                        <h5>Marketing Emails</h5>
+                                        <p>Promotional content and product recommendations</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="notification-section">
+                            <h4>Push Notifications</h4>
+                            <div class="toggle-list">
+                                <div class="toggle-item">
+                                    <div class="toggle-info">
+                                        <h5>Desktop Notifications</h5>
+                                        <p>Show desktop notifications for important updates</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="toggle-item">
+                                    <div class="toggle-info">
+                                        <h5>Message Alerts</h5>
+                                        <p>Instant notifications for new messages</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary">Reset to Default</button>
+                            <button type="button" class="btn-primary" onclick="showToast('Notification settings saved')">
+                                <i class='bx bx-check'></i>
+                                Save Preferences
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Security Tab -->
+                    <div class="settings-panel" id="security-panel">
+                        <div class="panel-header">
+                            <h3>Security Settings</h3>
+                            <p>Manage your account security and privacy</p>
+                        </div>
+
+                        <div class="security-section">
+                            <h4>Two-Factor Authentication</h4>
+                            <p>Add an extra layer of security to your account</p>
+                            <div class="security-card">
+                                <div class="security-info">
+                                    <i class='bx bx-lock-alt' style="font-size: 32px; color: var(--primary-color);"></i>
+                                    <div>
+                                        <h5>Two-Factor Authentication</h5>
+                                        <p>Secure your account with 2FA</p>
+                                    </div>
+                                </div>
+                                <button class="btn-primary">Enable 2FA</button>
+                            </div>
+                        </div>
+
+                        <div class="security-section">
+                            <h4>Active Sessions</h4>
+                            <p>Manage devices where you're currently logged in</p>
+                            <div class="session-list">
+                                <div class="session-item">
+                                    <i class='bx bx-laptop'></i>
+                                    <div class="session-info">
+                                        <h5>Windows 11 - Chrome</h5>
+                                        <p>Manila, Philippines • Current session</p>
+                                    </div>
+                                    <span class="session-status active">Active</span>
+                                </div>
+                                <div class="session-item">
+                                    <i class='bx bx-mobile'></i>
+                                    <div class="session-info">
+                                        <h5>iPhone 14 - Safari</h5>
+                                        <p>Manila, Philippines • Last active 2 hours ago</p>
+                                    </div>
+                                    <button class="btn-revoke">Revoke</button>
+                                </div>
+                                <div class="session-item">
+                                    <i class='bx bx-tablet'></i>
+                                    <div class="session-info">
+                                        <h5>iPad Pro - Safari</h5>
+                                        <p>Cebu, Philippines • Last active 1 day ago</p>
+                                    </div>
+                                    <button class="btn-revoke">Revoke</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="security-section">
+                            <h4>Login History</h4>
+                            <p>Recent login activity on your account</p>
+                            <div class="history-list">
+                                <div class="history-item">
+                                    <div class="history-icon success">
+                                        <i class='bx bx-check'></i>
+                                    </div>
+                                    <div class="history-info">
+                                        <h5>Successful login</h5>
+                                        <p>Windows 11 - Chrome • Manila, Philippines</p>
+                                        <span>Today at 9:42 AM</span>
+                                    </div>
+                                </div>
+                                <div class="history-item">
+                                    <div class="history-icon success">
+                                        <i class='bx bx-check'></i>
+                                    </div>
+                                    <div class="history-info">
+                                        <h5>Successful login</h5>
+                                        <p>iPhone 14 - Safari • Manila, Philippines</p>
+                                        <span>Yesterday at 6:15 PM</span>
+                                    </div>
+                                </div>
+                                <div class="history-item">
+                                    <div class="history-icon failed">
+                                        <i class='bx bx-x'></i>
+                                    </div>
+                                    <div class="history-info">
+                                        <h5>Failed login attempt</h5>
+                                        <p>Unknown device • Unknown location</p>
+                                        <span>2 days ago at 3:28 AM</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Preferences Tab -->
+                    <div class="settings-panel" id="preferences-panel">
+                        <div class="panel-header">
+                            <h3>Preferences</h3>
+                            <p>Customize your dashboard experience</p>
+                        </div>
+
+                        <div class="preference-section">
+                            <h4>Appearance</h4>
+                            <div class="preference-grid">
+                                <div class="preference-card active">
+                                    <i class='bx bx-sun'></i>
+                                    <h5>Light Mode</h5>
+                                    <p>Classic light theme</p>
+                                </div>
+                                <div class="preference-card">
+                                    <i class='bx bx-moon'></i>
+                                    <h5>Dark Mode</h5>
+                                    <p>Easy on the eyes</p>
+                                </div>
+                                <div class="preference-card">
+                                    <i class='bx bx-adjust'></i>
+                                    <h5>Auto</h5>
+                                    <p>Based on system</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="preference-section">
+                            <h4>Language & Region</h4>
+                            <form class="settings-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="language">Language</label>
+                                        <select id="language">
+                                            <option value="en" selected>English</option>
+                                            <option value="tl">Tagalog</option>
+                                            <option value="es">Spanish</option>
+                                            <option value="zh">Chinese</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="timezone">Timezone</label>
+                                        <select id="timezone">
+                                            <option value="asia/manila" selected>Asia/Manila (GMT+8)</option>
+                                            <option value="utc">UTC (GMT+0)</option>
+                                            <option value="america/new_york">America/New York (GMT-5)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="currency">Currency</label>
+                                        <select id="currency">
+                                            <option value="php" selected>PHP (₱)</option>
+                                            <option value="usd">USD ($)</option>
+                                            <option value="eur">EUR (€)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="dateFormat">Date Format</label>
+                                        <select id="dateFormat">
+                                            <option value="mm/dd/yyyy" selected>MM/DD/YYYY</option>
+                                            <option value="dd/mm/yyyy">DD/MM/YYYY</option>
+                                            <option value="yyyy-mm-dd">YYYY-MM-DD</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="preference-section">
+                            <h4>Data & Privacy</h4>
+                            <div class="toggle-list">
+                                <div class="toggle-item">
+                                    <div class="toggle-info">
+                                        <h5>Analytics</h5>
+                                        <p>Help improve our service by sharing usage data</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="toggle-item">
+                                    <div class="toggle-info">
+                                        <h5>Personalization</h5>
+                                        <p>Customize your experience based on your activity</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary">Reset All</button>
+                            <button type="button" class="btn-primary" onclick="showToast('Preferences saved successfully')">
+                                <i class='bx bx-check'></i>
+                                Save Preferences
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom JS -->
+    <script src="../js/settings.js"></script>
+</body>
+</html>
+

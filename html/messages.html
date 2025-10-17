@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages - Admin Dashboard</title>
+    
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/messages.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class='bx bx-cube-alt'></i>
+            <span class="logo_name">Admin</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="index.html">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link_name">Dashboard</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="index.html">Dashboard</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="products.html">
+                    <i class='bx bx-box'></i>
+                    <span class="link_name">Products</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="products.html">Products</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="orders.html">
+                    <i class='bx bx-shopping-bag'></i>
+                    <span class="link_name">Orders</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="orders.html">Orders</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="analytics.html">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="link_name">Analytics</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="analytics.html">Analytics</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="stock.html">
+                    <i class='bx bx-package'></i>
+                    <span class="link_name">Stock</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="stock.html">Stock</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="total-orders.html">
+                    <i class='bx bx-receipt'></i>
+                    <span class="link_name">Total Orders</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="total-orders.html">Total Orders</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="team.html">
+                    <i class='bx bx-user'></i>
+                    <span class="link_name">Team</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="team.html">Team</a></li>
+                </ul>
+            </li>
+            <li class="active">
+                <a href="messages.html">
+                    <i class='bx bx-message'></i>
+                    <span class="link_name">Messages</span>
+                    <span class="badge">5</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="messages.html">Messages</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="favorites.html">
+                    <i class='bx bx-heart'></i>
+                    <span class="link_name">Favorites</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="favorites.html">Favorites</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="settings.html">
+                    <i class='bx bx-cog'></i>
+                    <span class="link_name">Settings</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="settings.html">Settings</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="profile-details">
+            <div class="profile-content">
+                <img src="../images/profile.jpg" alt="profile">
+            </div>
+            <div class="name-job">
+                <div class="profile_name">Admin User</div>
+                <div class="job">Administrator</div>
+            </div>
+            <i class='bx bx-log-out' id="log_out"></i>
+        </div>
+    </div>
+
+    <!-- Home Section -->
+    <section class="home-section">
+        <div class="home-content">
+            <i class='bx bx-menu'></i>
+            <span class="text">Messages</span>
+            <div class="breadcrumb">
+                <a href="index.html"><i class='bx bx-home'></i> Home</a>
+                <span>/</span>
+                <span>Messages</span>
+            </div>
+        </div>
+
+        <!-- Main Container -->
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="header-left">
+                    <h2>Messages</h2>
+                    <p>Communicate with your team and customers</p>
+                </div>
+                <div class="header-right">
+                    <button class="btn-primary" id="composeBtn">
+                        <i class='bx bx-edit'></i>
+                        Compose
+                    </button>
+                </div>
+            </div>
+
+            <!-- Messages Layout -->
+            <div class="messages-layout">
+                <!-- Messages Sidebar -->
+                <div class="messages-sidebar">
+                    <!-- Folder Tabs -->
+                    <div class="folder-tabs">
+                        <button class="folder-tab active" data-folder="inbox">
+                            <i class='bx bx-inbox'></i>
+                            <span>Inbox</span>
+                            <span class="folder-count">12</span>
+                        </button>
+                        <button class="folder-tab" data-folder="sent">
+                            <i class='bx bx-send'></i>
+                            <span>Sent</span>
+                            <span class="folder-count">8</span>
+                        </button>
+                        <button class="folder-tab" data-folder="starred">
+                            <i class='bx bx-star'></i>
+                            <span>Starred</span>
+                            <span class="folder-count">3</span>
+                        </button>
+                        <button class="folder-tab" data-folder="archived">
+                            <i class='bx bx-archive'></i>
+                            <span>Archived</span>
+                            <span class="folder-count">15</span>
+                        </button>
+                    </div>
+
+                    <!-- Search & Filter -->
+                    <div class="search-filter">
+                        <div class="search-box">
+                            <i class='bx bx-search'></i>
+                            <input type="text" id="searchMessages" placeholder="Search messages...">
+                        </div>
+                        <select class="filter-select" id="priorityFilter">
+                            <option value="">All Priority</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+
+                    <!-- Messages List -->
+                    <div class="messages-list" id="messagesList">
+                        <!-- Messages will be dynamically loaded here -->
+                    </div>
+                </div>
+
+                <!-- Message Detail View -->
+                <div class="message-detail" id="messageDetail">
+                    <div class="empty-state">
+                        <i class='bx bx-message-square-dots'></i>
+                        <h3>No Message Selected</h3>
+                        <p>Select a message from the list to view its contents</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compose Modal -->
+    <div class="modal" id="composeModal">
+        <div class="modal-content compose-modal-content">
+            <div class="modal-header">
+                <h3>New Message</h3>
+                <button class="close-modal">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="composeForm">
+                    <div class="form-group">
+                        <label for="recipient">To</label>
+                        <select id="recipient" required multiple>
+                            <option value="john@company.com">John Doe (john@company.com)</option>
+                            <option value="jane@company.com">Jane Smith (jane@company.com)</option>
+                            <option value="mike@company.com">Mike Johnson (mike@company.com)</option>
+                            <option value="emily@company.com">Emily Brown (emily@company.com)</option>
+                            <option value="david@company.com">David Wilson (david@company.com)</option>
+                            <option value="sarah@company.com">Sarah Anderson (sarah@company.com)</option>
+                        </select>
+                        <small>Hold Ctrl/Cmd to select multiple recipients</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" placeholder="Enter message subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="priority">Priority</label>
+                        <select id="priority">
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="messageBody">Message</label>
+                        <textarea id="messageBody" rows="10" placeholder="Type your message here..." required></textarea>
+                    </div>
+
+                    <div class="compose-toolbar">
+                        <button type="button" class="toolbar-btn" title="Attach file">
+                            <i class='bx bx-paperclip'></i>
+                        </button>
+                        <button type="button" class="toolbar-btn" title="Insert image">
+                            <i class='bx bx-image'></i>
+                        </button>
+                        <button type="button" class="toolbar-btn" title="Insert emoji">
+                            <i class='bx bx-smile'></i>
+                        </button>
+                        <button type="button" class="toolbar-btn" title="Format text">
+                            <i class='bx bx-font'></i>
+                        </button>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn-secondary" onclick="document.getElementById('composeModal').classList.remove('active')">Cancel</button>
+                        <button type="submit" class="btn-primary">
+                            <i class='bx bx-send'></i>
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reply Modal -->
+    <div class="modal" id="replyModal">
+        <div class="modal-content reply-modal-content">
+            <div class="modal-header">
+                <h3>Reply to Message</h3>
+                <button class="close-modal">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="replyForm">
+                    <div class="reply-info">
+                        <p><strong>To:</strong> <span id="replyTo"></span></p>
+                        <p><strong>Subject:</strong> <span id="replySubject"></span></p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="replyBody">Your Reply</label>
+                        <textarea id="replyBody" rows="8" placeholder="Type your reply here..." required></textarea>
+                    </div>
+
+                    <div class="compose-toolbar">
+                        <button type="button" class="toolbar-btn" title="Attach file">
+                            <i class='bx bx-paperclip'></i>
+                        </button>
+                        <button type="button" class="toolbar-btn" title="Insert image">
+                            <i class='bx bx-image'></i>
+                        </button>
+                        <button type="button" class="toolbar-btn" title="Insert emoji">
+                            <i class='bx bx-smile'></i>
+                        </button>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn-secondary" onclick="document.getElementById('replyModal').classList.remove('active')">Cancel</button>
+                        <button type="submit" class="btn-primary">
+                            <i class='bx bx-reply'></i>
+                            Send Reply
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="../js/messages.js"></script>
+</body>
+</html>
+

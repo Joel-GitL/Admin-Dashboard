@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products Management | Admin</title>
+    <link rel="stylesheet" href="../css/products.css">
+    <link rel="stylesheet" href="../css/products-enhanced.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class='bx bx-store-alt'></i>
+            <span class="logo_name">Admin</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="index.html">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link_name">Dashboard</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="index.html">Dashboard</a></li>
+                </ul>
+            </li>
+            <li class="active">
+                <a href="products.html">
+                    <i class='bx bx-box'></i>
+                    <span class="link_name">Product</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="products.html">Product</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="orders.html">
+                    <i class='bx bx-receipt'></i>
+                    <span class="link_name">Orders</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="orders.html">Orders</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="analytics.html">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="link_name">Analytics</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="analytics.html">Analytics</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="stock.html">
+                    <i class='bx bx-package'></i>
+                    <span class="link_name">Stock</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="stock.html">Stock</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="total-orders.html">
+                    <i class='bx bx-list-ul'></i>
+                    <span class="link_name">Total Orders</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="total-orders.html">Total Orders</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="team.html">
+                    <i class='bx bx-group'></i>
+                    <span class="link_name">Team</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="team.html">Team</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="messages.html">
+                    <i class='bx bx-message'></i>
+                    <span class="link_name">Messages</span>
+                    <span class="badge">5</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="messages.html">Messages</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="favorites.html">
+                    <i class='bx bx-heart'></i>
+                    <span class="link_name">Favorites</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="favorites.html">Favorites</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="settings.html">
+                    <i class='bx bx-cog'></i>
+                    <span class="link_name">Settings</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="settings.html">Settings</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="profile-details">
+                    <div class="profile-content">
+                        <img src="../images/profile.jpg" alt="profile">
+                    </div>
+                    <div class="name-job">
+                        <div class="profile_name">Admin User</div>
+                        <div class="job">Administrator</div>
+                    </div>
+                    <i class='bx bx-log-out' id="log_out"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <section class="home-section">
+        <div class="home-content">
+            <i class='bx bx-menu'></i>
+            <span class="text">Products Management</span>
+        </div>
+
+        <div class="container">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <i class="bx bx-home"></i>
+                <span>Home</span>
+                <i class="bx bx-chevron-right"></i>
+                <span class="active">Products</span>
+            </div>
+
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="header-left">
+                    <h1>Products Management</h1>
+                    <p>Manage your product inventory and catalog</p>
+                </div>
+                <button class="btn btn-primary" id="addProductBtn">
+                    <i class="bx bx-plus"></i>
+                    Add New Product
+                </button>
+            </div>
+
+            <!-- Filters and Controls -->
+            <div class="filters-card">
+                <div class="filters-row">
+                    <div class="filter-group">
+                        <div class="search-input-wrapper">
+                            <i class="bx bx-search"></i>
+                            <input type="text" class="filter-input" placeholder="Search by name, SKU..." id="productSearch">
+                        </div>
+                        
+                        <select class="filter-select" id="categoryFilter">
+                            <option value="">All Categories</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="clothing">Clothing</option>
+                            <option value="food">Food & Beverages</option>
+                            <option value="home">Home & Garden</option>
+                            <option value="sports">Sports</option>
+                            <option value="beauty">Beauty & Health</option>
+                        </select>
+                        
+                        <select class="filter-select" id="statusFilter">
+                            <option value="">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                            <option value="draft">Draft</option>
+                        </select>
+                        
+                        <select class="filter-select" id="stockFilter">
+                            <option value="">All Stock</option>
+                            <option value="in-stock">In Stock</option>
+                            <option value="low-stock">Low Stock</option>
+                            <option value="out-of-stock">Out of Stock</option>
+                        </select>
+                    </div>
+                    
+                    <div class="view-controls">
+                        <button class="view-btn active" data-view="grid" title="Grid View">
+                            <i class="bx bx-grid-alt"></i>
+                        </button>
+                        <button class="view-btn" data-view="list" title="List View">
+                            <i class="bx bx-list-ul"></i>
+                        </button>
+                        <button class="btn btn-secondary" id="exportBtn">
+                            <i class="bx bx-download"></i>
+                            Export
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Bulk Actions Bar (hidden by default) -->
+                <div class="bulk-actions-bar" id="bulkActionsBar" style="display: none;">
+                    <span class="selected-count">0 items selected</span>
+                    <div class="bulk-buttons">
+                        <button class="btn btn-sm btn-secondary" id="bulkEditBtn">
+                            <i class="bx bx-edit"></i> Edit
+                        </button>
+                        <button class="btn btn-sm btn-secondary" id="bulkDeleteBtn">
+                            <i class="bx bx-trash"></i> Delete
+                        </button>
+                        <button class="btn btn-sm btn-secondary" id="bulkExportBtn">
+                            <i class="bx bx-export"></i> Export Selected
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Grid View -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Product Card 1 -->
+                <div class="product-card" data-category="electronics" data-stock="in-stock">
+                    <input type="checkbox" class="product-checkbox">
+                    <div class="product-image">
+                        <!-- Placeholder: Product Image - 300x300px, white background -->
+                        <div class="image-placeholder">
+                            <i class="bx bx-image"></i>
+                            <p>Product Image<br>300x300px</p>
+                        </div>
+                        <div class="product-badges">
+                            <span class="badge badge-success">In Stock</span>
+                            <span class="badge badge-primary">Featured</span>
+                        </div>
+                        <button class="quick-view-btn" title="Quick View">
+                            <i class="bx bx-show"></i>
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Electronics</div>
+                        <h3 class="product-title">Premium Wireless Headphones</h3>
+                        <div class="product-meta">
+                            <span class="sku">SKU: PRD-001</span>
+                            <span class="stock-qty">Stock: <strong>145</strong></span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">₱5,999.00</span>
+                            <span class="old-price">₱7,999.00</span>
+                            <span class="discount">-25%</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star-half"></i>
+                            <span>(4.5)</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-action btn-edit" title="Edit Product">
+                            <i class="bx bx-edit"></i>
+                        </button>
+                        <button class="btn-action btn-duplicate" title="Duplicate">
+                            <i class="bx bx-copy"></i>
+                        </button>
+                        <button class="btn-action btn-delete" title="Delete">
+                            <i class="bx bx-trash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product-card" data-category="clothing" data-stock="low-stock">
+                    <input type="checkbox" class="product-checkbox">
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <i class="bx bx-image"></i>
+                            <p>Product Image<br>300x300px</p>
+                        </div>
+                        <div class="product-badges">
+                            <span class="badge badge-warning">Low Stock</span>
+                            <span class="badge badge-info">New</span>
+                        </div>
+                        <button class="quick-view-btn" title="Quick View">
+                            <i class="bx bx-show"></i>
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Clothing</div>
+                        <h3 class="product-title">Premium Cotton T-Shirt</h3>
+                        <div class="product-meta">
+                            <span class="sku">SKU: PRD-002</span>
+                            <span class="stock-qty warning">Stock: <strong>8</strong></span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">₱799.00</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bx-star"></i>
+                            <span>(4.0)</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-action btn-edit" title="Edit Product">
+                            <i class="bx bx-edit"></i>
+                        </button>
+                        <button class="btn-action btn-duplicate" title="Duplicate">
+                            <i class="bx bx-copy"></i>
+                        </button>
+                        <button class="btn-action btn-delete" title="Delete">
+                            <i class="bx bx-trash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="product-card" data-category="electronics" data-stock="out-of-stock">
+                    <input type="checkbox" class="product-checkbox">
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <i class="bx bx-image"></i>
+                            <p>Product Image<br>300x300px</p>
+                        </div>
+                        <div class="product-badges">
+                            <span class="badge badge-danger">Out of Stock</span>
+                        </div>
+                        <button class="quick-view-btn" title="Quick View">
+                            <i class="bx bx-show"></i>
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Electronics</div>
+                        <h3 class="product-title">Smart Watch Pro Series 5</h3>
+                        <div class="product-meta">
+                            <span class="sku">SKU: PRD-003</span>
+                            <span class="stock-qty danger">Stock: <strong>0</strong></span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">₱12,999.00</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <span>(5.0)</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-action btn-edit" title="Edit Product">
+                            <i class="bx bx-edit"></i>
+                        </button>
+                        <button class="btn-action btn-duplicate" title="Duplicate">
+                            <i class="bx bx-copy"></i>
+                        </button>
+                        <button class="btn-action btn-delete" title="Delete">
+                            <i class="bx bx-trash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="product-card" data-category="home" data-stock="in-stock">
+                    <input type="checkbox" class="product-checkbox">
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <i class="bx bx-image"></i>
+                            <p>Product Image<br>300x300px</p>
+                        </div>
+                        <div class="product-badges">
+                            <span class="badge badge-success">In Stock</span>
+                        </div>
+                        <button class="quick-view-btn" title="Quick View">
+                            <i class="bx bx-show"></i>
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Home & Garden</div>
+                        <h3 class="product-title">Modern Table Lamp</h3>
+                        <div class="product-meta">
+                            <span class="sku">SKU: PRD-004</span>
+                            <span class="stock-qty">Stock: <strong>67</strong></span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">₱1,499.00</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bx-star"></i>
+                            <span>(4.2)</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-action btn-edit" title="Edit Product">
+                            <i class="bx bx-edit"></i>
+                        </button>
+                        <button class="btn-action btn-duplicate" title="Duplicate">
+                            <i class="bx bx-copy"></i>
+                        </button>
+                        <button class="btn-action btn-delete" title="Delete">
+                            <i class="bx bx-trash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Card 5 -->
+                <div class="product-card" data-category="beauty" data-stock="in-stock">
+                    <input type="checkbox" class="product-checkbox">
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <i class="bx bx-image"></i>
+                            <p>Product Image<br>300x300px</p>
+                        </div>
+                        <div class="product-badges">
+                            <span class="badge badge-success">In Stock</span>
+                            <span class="badge badge-secondary">Sale</span>
+                        </div>
+                        <button class="quick-view-btn" title="Quick View">
+                            <i class="bx bx-show"></i>
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Beauty & Health</div>
+                        <h3 class="product-title">Organic Skincare Set</h3>
+                        <div class="product-meta">
+                            <span class="sku">SKU: PRD-005</span>
+                            <span class="stock-qty">Stock: <strong>32</strong></span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">₱2,499.00</span>
+                            <span class="old-price">₱3,299.00</span>
+                            <span class="discount">-24%</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star-half"></i>
+                            <span>(4.7)</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-action btn-edit" title="Edit Product">
+                            <i class="bx bx-edit"></i>
+                        </button>
+                        <button class="btn-action btn-duplicate" title="Duplicate">
+                            <i class="bx bx-copy"></i>
+                        </button>
+                        <button class="btn-action btn-delete" title="Delete">
+                            <i class="bx bx-trash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Card 6 -->
+                <div class="product-card" data-category="sports" data-stock="in-stock">
+                    <input type="checkbox" class="product-checkbox">
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <i class="bx bx-image"></i>
+                            <p>Product Image<br>300x300px</p>
+                        </div>
+                        <div class="product-badges">
+                            <span class="badge badge-success">In Stock</span>
+                        </div>
+                        <button class="quick-view-btn" title="Quick View">
+                            <i class="bx bx-show"></i>
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Sports</div>
+                        <h3 class="product-title">Yoga Mat Premium Quality</h3>
+                        <div class="product-meta">
+                            <span class="sku">SKU: PRD-006</span>
+                            <span class="stock-qty">Stock: <strong>98</strong></span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">₱899.00</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bx-star"></i>
+                            <span>(4.3)</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-action btn-edit" title="Edit Product">
+                            <i class="bx bx-edit"></i>
+                        </button>
+                        <button class="btn-action btn-duplicate" title="Duplicate">
+                            <i class="bx bx-copy"></i>
+                        </button>
+                        <button class="btn-action btn-delete" title="Delete">
+                            <i class="bx bx-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products List View (Hidden by default) -->
+            <div class="products-list" id="productsList" style="display: none;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="selectAll"></th>
+                            <th>Image</th>
+                            <th>Product Name</th>
+                            <th>Category</th>
+                            <th>SKU</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" class="row-checkbox"></td>
+                            <td>
+                                <div class="table-img-placeholder">
+                                    <i class="bx bx-image"></i>
+                                </div>
+                            </td>
+                            <td><strong>Premium Wireless Headphones</strong></td>
+                            <td>Electronics</td>
+                            <td>PRD-001</td>
+                            <td><strong>₱5,999.00</strong></td>
+                            <td><span class="badge badge-success">145</span></td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>
+                                <div class="table-actions">
+                                    <button class="btn-action-sm btn-edit"><i class="bx bx-edit"></i></button>
+                                    <button class="btn-action-sm btn-duplicate"><i class="bx bx-copy"></i></button>
+                                    <button class="btn-action-sm btn-delete"><i class="bx bx-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- More rows would be here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <div class="pagination-info">
+                    Showing 1-6 of 156 products
+                </div>
+                <div class="pagination-controls">
+                    <button class="btn-pagination" disabled>
+                        <i class="bx bx-chevron-left"></i>
+                    </button>
+                    <button class="btn-pagination active">1</button>
+                    <button class="btn-pagination">2</button>
+                    <button class="btn-pagination">3</button>
+                    <span class="pagination-dots">...</span>
+                    <button class="btn-pagination">26</button>
+                    <button class="btn-pagination">
+                        <i class="bx bx-chevron-right"></i>
+                    </button>
+                </div>
+                <select class="items-per-page">
+                    <option value="6" selected>6 per page</option>
+                    <option value="12">12 per page</option>
+                    <option value="24">24 per page</option>
+                    <option value="48">48 per page</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add/Edit Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Product</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="productForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Product Name *</label>
+                            <input type="text" class="form-input" required placeholder="Enter product name">
+                        </div>
+                        <div class="form-group">
+                            <label>SKU *</label>
+                            <input type="text" class="form-input" required placeholder="PRD-XXX">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Category *</label>
+                            <select class="form-input" required>
+                                <option value="">Select Category</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="clothing">Clothing</option>
+                                <option value="food">Food & Beverages</option>
+                                <option value="home">Home & Garden</option>
+                                <option value="sports">Sports</option>
+                                <option value="beauty">Beauty & Health</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Price *</label>
+                            <input type="number" class="form-input" required placeholder="0.00">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Stock Quantity *</label>
+                            <input type="number" class="form-input" required placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select class="form-input">
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                                <option value="draft">Draft</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea class="form-input" rows="4" placeholder="Product description..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Product Image</label>
+                        <div class="file-upload-area">
+                            <i class="bx bx-cloud-upload"></i>
+                            <p>Click to upload or drag and drop</p>
+                            <small>SVG, PNG, JPG or GIF (MAX. 800x400px)</small>
+                            <input type="file" hidden accept="image/*">
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary modal-close">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Product</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/products.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Management | Admin</title>
+    <link rel="stylesheet" href="../css/team.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class='bx bx-check-circle'></i>
+        <span class="toast-message">Action completed successfully!</span>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class='bx bx-store-alt'></i>
+            <span class="logo_name">Admin</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="index.html">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link_name">Dashboard</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="index.html">Dashboard</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="products.html">
+                    <i class='bx bx-box'></i>
+                    <span class="link_name">Product</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="products.html">Product</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="orders.html">
+                    <i class='bx bx-receipt'></i>
+                    <span class="link_name">Orders</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="orders.html">Orders</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="analytics.html">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="link_name">Analytics</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="analytics.html">Analytics</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="stock.html">
+                    <i class='bx bx-package'></i>
+                    <span class="link_name">Stock</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="stock.html">Stock</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="total-orders.html">
+                    <i class='bx bx-list-ul'></i>
+                    <span class="link_name">Total Orders</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="total-orders.html">Total Orders</a></li>
+                </ul>
+            </li>
+            <li class="active">
+                <a href="team.html">
+                    <i class='bx bx-group'></i>
+                    <span class="link_name">Team</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="team.html">Team</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="messages.html">
+                    <i class='bx bx-message'></i>
+                    <span class="link_name">Messages</span>
+                    <span class="badge">5</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="messages.html">Messages</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="favorites.html">
+                    <i class='bx bx-heart'></i>
+                    <span class="link_name">Favorites</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="favorites.html">Favorites</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="settings.html">
+                    <i class='bx bx-cog'></i>
+                    <span class="link_name">Settings</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="settings.html">Settings</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="profile-details">
+                    <div class="profile-content">
+                        <img src="../images/profile.jpg" alt="profile">
+                    </div>
+                    <div class="name-job">
+                        <div class="profile_name">Admin User</div>
+                        <div class="job">Administrator</div>
+                    </div>
+                    <i class='bx bx-log-out' id="log_out"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <section class="home-section">
+        <div class="home-content">
+            <i class='bx bx-menu'></i>
+            <span class="text">Team Management</span>
+            
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="index.html"><i class='bx bx-home'></i> Home</a>
+                <span>/</span>
+                <span>Team</span>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="header-left">
+                    <h2>Team Members</h2>
+                    <p>Manage your team and their permissions</p>
+                </div>
+                <div class="header-right">
+                    <button class="btn-primary" id="addMemberBtn">
+                        <i class='bx bx-user-plus'></i> Add Member
+                    </button>
+                    <button class="btn-secondary" id="exportTeamBtn">
+                        <i class='bx bx-download'></i> Export
+                    </button>
+                </div>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class='bx bx-group'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalMembers">24</h3>
+                        <p>Total Members</p>
+                        <span class="stat-change positive">
+                            <i class='bx bx-up-arrow-alt'></i> 3 new this month
+                        </span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class='bx bx-user-check'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="activeMembers">18</h3>
+                        <p>Active Members</p>
+                        <span class="stat-change positive">
+                            <i class='bx bx-up-arrow-alt'></i> 75% online
+                        </span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class='bx bx-briefcase'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalDepartments">5</h3>
+                        <p>Departments</p>
+                        <span class="stat-change neutral">
+                            <i class='bx bx-minus'></i> No change
+                        </span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <i class='bx bx-user-x'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="pendingInvites">6</h3>
+                        <p>Pending Invites</p>
+                        <span class="stat-change neutral">
+                            <i class='bx bx-time-five'></i> Awaiting response
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter and View Toggle Bar -->
+            <div class="filter-bar">
+                <div class="filter-left">
+                    <div class="search-box">
+                        <i class='bx bx-search'></i>
+                        <input type="text" id="searchTeam" placeholder="Search by name, email, role...">
+                    </div>
+                    <select class="filter-select" id="departmentFilter">
+                        <option value="">All Departments</option>
+                        <option value="management">Management</option>
+                        <option value="sales">Sales</option>
+                        <option value="support">Customer Support</option>
+                        <option value="development">Development</option>
+                        <option value="marketing">Marketing</option>
+                    </select>
+                    <select class="filter-select" id="roleFilter">
+                        <option value="">All Roles</option>
+                        <option value="admin">Administrator</option>
+                        <option value="manager">Manager</option>
+                        <option value="staff">Staff</option>
+                        <option value="viewer">Viewer</option>
+                    </select>
+                    <select class="filter-select" id="statusFilter">
+                        <option value="">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                        <option value="pending">Pending</option>
+                    </select>
+                </div>
+                <div class="filter-right">
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="grid" title="Grid View">
+                            <i class='bx bx-grid-alt'></i>
+                        </button>
+                        <button class="view-btn" data-view="list" title="List View">
+                            <i class='bx bx-list-ul'></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Grid View -->
+            <div class="team-view grid-view active">
+                <div class="team-grid">
+                    <!-- Member Card 1 -->
+                    <div class="member-card" data-member-id="1">
+                        <div class="card-header">
+                            <span class="status-indicator active" title="Active"></span>
+                            <div class="card-actions">
+                                <button class="action-btn" onclick="editMember(1)">
+                                    <i class='bx bx-edit'></i>
+                                </button>
+                                <button class="action-btn" onclick="deleteMember(1)">
+                                    <i class='bx bx-trash'></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="member-avatar">
+                            <span>JD</span>
+                        </div>
+                        <div class="member-info">
+                            <h3>John Doe</h3>
+                            <p class="member-email">john.doe@company.com</p>
+                            <span class="role-badge admin">Administrator</span>
+                            <span class="department-badge">Management</span>
+                        </div>
+                        <div class="member-stats">
+                            <div class="stat-item">
+                                <i class='bx bx-calendar'></i>
+                                <span>Joined: Jan 2024</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class='bx bx-time'></i>
+                                <span>Last seen: 2 min ago</span>
+                            </div>
+                        </div>
+                        <button class="view-profile-btn" onclick="viewProfile(1)">
+                            View Profile
+                        </button>
+                    </div>
+
+                    <!-- Member Card 2 -->
+                    <div class="member-card" data-member-id="2">
+                        <div class="card-header">
+                            <span class="status-indicator active" title="Active"></span>
+                            <div class="card-actions">
+                                <button class="action-btn" onclick="editMember(2)">
+                                    <i class='bx bx-edit'></i>
+                                </button>
+                                <button class="action-btn" onclick="deleteMember(2)">
+                                    <i class='bx bx-trash'></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="member-avatar">
+                            <span>JS</span>
+                        </div>
+                        <div class="member-info">
+                            <h3>Jane Smith</h3>
+                            <p class="member-email">jane.smith@company.com</p>
+                            <span class="role-badge manager">Manager</span>
+                            <span class="department-badge">Sales</span>
+                        </div>
+                        <div class="member-stats">
+                            <div class="stat-item">
+                                <i class='bx bx-calendar'></i>
+                                <span>Joined: Feb 2024</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class='bx bx-time'></i>
+                                <span>Last seen: 15 min ago</span>
+                            </div>
+                        </div>
+                        <button class="view-profile-btn" onclick="viewProfile(2)">
+                            View Profile
+                        </button>
+                    </div>
+
+                    <!-- Member Card 3 -->
+                    <div class="member-card" data-member-id="3">
+                        <div class="card-header">
+                            <span class="status-indicator active" title="Active"></span>
+                            <div class="card-actions">
+                                <button class="action-btn" onclick="editMember(3)">
+                                    <i class='bx bx-edit'></i>
+                                </button>
+                                <button class="action-btn" onclick="deleteMember(3)">
+                                    <i class='bx bx-trash'></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="member-avatar">
+                            <span>MJ</span>
+                        </div>
+                        <div class="member-info">
+                            <h3>Mike Johnson</h3>
+                            <p class="member-email">mike.j@company.com</p>
+                            <span class="role-badge staff">Staff</span>
+                            <span class="department-badge">Support</span>
+                        </div>
+                        <div class="member-stats">
+                            <div class="stat-item">
+                                <i class='bx bx-calendar'></i>
+                                <span>Joined: Mar 2024</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class='bx bx-time'></i>
+                                <span>Last seen: 1 hour ago</span>
+                            </div>
+                        </div>
+                        <button class="view-profile-btn" onclick="viewProfile(3)">
+                            View Profile
+                        </button>
+                    </div>
+
+                    <!-- Member Card 4 -->
+                    <div class="member-card" data-member-id="4">
+                        <div class="card-header">
+                            <span class="status-indicator inactive" title="Inactive"></span>
+                            <div class="card-actions">
+                                <button class="action-btn" onclick="editMember(4)">
+                                    <i class='bx bx-edit'></i>
+                                </button>
+                                <button class="action-btn" onclick="deleteMember(4)">
+                                    <i class='bx bx-trash'></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="member-avatar">
+                            <span>EB</span>
+                        </div>
+                        <div class="member-info">
+                            <h3>Emily Brown</h3>
+                            <p class="member-email">emily.b@company.com</p>
+                            <span class="role-badge staff">Staff</span>
+                            <span class="department-badge">Development</span>
+                        </div>
+                        <div class="member-stats">
+                            <div class="stat-item">
+                                <i class='bx bx-calendar'></i>
+                                <span>Joined: Apr 2024</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class='bx bx-time'></i>
+                                <span>Last seen: 2 days ago</span>
+                            </div>
+                        </div>
+                        <button class="view-profile-btn" onclick="viewProfile(4)">
+                            View Profile
+                        </button>
+                    </div>
+
+                    <!-- Member Card 5 -->
+                    <div class="member-card" data-member-id="5">
+                        <div class="card-header">
+                            <span class="status-indicator active" title="Active"></span>
+                            <div class="card-actions">
+                                <button class="action-btn" onclick="editMember(5)">
+                                    <i class='bx bx-edit'></i>
+                                </button>
+                                <button class="action-btn" onclick="deleteMember(5)">
+                                    <i class='bx bx-trash'></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="member-avatar">
+                            <span>DW</span>
+                        </div>
+                        <div class="member-info">
+                            <h3>David Wilson</h3>
+                            <p class="member-email">david.w@company.com</p>
+                            <span class="role-badge manager">Manager</span>
+                            <span class="department-badge">Marketing</span>
+                        </div>
+                        <div class="member-stats">
+                            <div class="stat-item">
+                                <i class='bx bx-calendar'></i>
+                                <span>Joined: May 2024</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class='bx bx-time'></i>
+                                <span>Last seen: 30 min ago</span>
+                            </div>
+                        </div>
+                        <button class="view-profile-btn" onclick="viewProfile(5)">
+                            View Profile
+                        </button>
+                    </div>
+
+                    <!-- Member Card 6 -->
+                    <div class="member-card" data-member-id="6">
+                        <div class="card-header">
+                            <span class="status-indicator pending" title="Pending"></span>
+                            <div class="card-actions">
+                                <button class="action-btn" onclick="editMember(6)">
+                                    <i class='bx bx-edit'></i>
+                                </button>
+                                <button class="action-btn" onclick="deleteMember(6)">
+                                    <i class='bx bx-trash'></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="member-avatar">
+                            <span>SA</span>
+                        </div>
+                        <div class="member-info">
+                            <h3>Sarah Anderson</h3>
+                            <p class="member-email">sarah.a@company.com</p>
+                            <span class="role-badge viewer">Viewer</span>
+                            <span class="department-badge">Sales</span>
+                        </div>
+                        <div class="member-stats">
+                            <div class="stat-item">
+                                <i class='bx bx-calendar'></i>
+                                <span>Invited: Oct 2024</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class='bx bx-time'></i>
+                                <span>Pending invitation</span>
+                            </div>
+                        </div>
+                        <button class="view-profile-btn" onclick="viewProfile(6)">
+                            View Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team List View -->
+            <div class="team-view list-view">
+                <div class="list-container">
+                    <table class="team-table">
+                        <thead>
+                            <tr>
+                                <th>Member</th>
+                                <th>Role</th>
+                                <th>Department</th>
+                                <th>Status</th>
+                                <th>Joined</th>
+                                <th>Last Seen</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="teamTableBody">
+                            <!-- Table rows will be dynamically populated -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Activity Log Section -->
+            <div class="activity-section">
+                <div class="section-header">
+                    <h3>Recent Activity</h3>
+                    <button class="btn-view-all" id="viewAllActivityBtn">
+                        View All <i class='bx bx-right-arrow-alt'></i>
+                    </button>
+                </div>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon add">
+                            <i class='bx bx-user-plus'></i>
+                        </div>
+                        <div class="activity-content">
+                            <h4><strong>John Doe</strong> added <strong>Sarah Anderson</strong> to the team</h4>
+                            <p>Invited as Viewer in Sales department</p>
+                            <span class="activity-time">2 hours ago</span>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-icon edit">
+                            <i class='bx bx-edit'></i>
+                        </div>
+                        <div class="activity-content">
+                            <h4><strong>Jane Smith</strong> updated <strong>Mike Johnson's</strong> role</h4>
+                            <p>Changed from Viewer to Staff</p>
+                            <span class="activity-time">5 hours ago</span>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-icon remove">
+                            <i class='bx bx-user-minus'></i>
+                        </div>
+                        <div class="activity-content">
+                            <h4><strong>David Wilson</strong> removed <strong>Tom Lee</strong> from the team</h4>
+                            <p>User account deactivated</p>
+                            <span class="activity-time">1 day ago</span>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-icon permissions">
+                            <i class='bx bx-shield'></i>
+                        </div>
+                        <div class="activity-content">
+                            <h4><strong>John Doe</strong> updated permissions for <strong>Sales</strong> department</h4>
+                            <p>Modified access to analytics dashboard</p>
+                            <span class="activity-time">2 days ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add/Edit Member Modal -->
+    <div class="modal" id="memberModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Add Team Member</h3>
+                <button class="close-modal" id="closeModal">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="memberForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="role">Role *</label>
+                            <select id="role" required>
+                                <option value="">Select Role</option>
+                                <option value="admin">Administrator</option>
+                                <option value="manager">Manager</option>
+                                <option value="staff">Staff</option>
+                                <option value="viewer">Viewer</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="department">Department *</label>
+                            <select id="department" required>
+                                <option value="">Select Department</option>
+                                <option value="management">Management</option>
+                                <option value="sales">Sales</option>
+                                <option value="support">Customer Support</option>
+                                <option value="development">Development</option>
+                                <option value="marketing">Marketing</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Permissions</label>
+                        <div class="permissions-grid">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="permissions" value="dashboard">
+                                <span>Dashboard Access</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="permissions" value="products">
+                                <span>Product Management</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="permissions" value="orders">
+                                <span>Order Management</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="permissions" value="analytics">
+                                <span>Analytics & Reports</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="permissions" value="team">
+                                <span>Team Management</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="permissions" value="settings">
+                                <span>Settings</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Notes (Optional)</label>
+                        <textarea id="notes" rows="3" placeholder="Add any additional notes about this member..."></textarea>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
+                        <button type="submit" class="btn-primary">Save Member</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/team.js"></script>
+</body>
+</html>
+

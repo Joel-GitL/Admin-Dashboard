@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Management | Admin</title>
+    <link rel="stylesheet" href="../css/stock.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class='bx bx-check-circle'></i>
+        <span class="toast-message">Action completed successfully!</span>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class='bx bx-store-alt'></i>
+            <span class="logo_name">Admin</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="index.html">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link_name">Dashboard</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="index.html">Dashboard</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="products.html">
+                    <i class='bx bx-box'></i>
+                    <span class="link_name">Product</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="products.html">Product</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="orders.html">
+                    <i class='bx bx-receipt'></i>
+                    <span class="link_name">Orders</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="orders.html">Orders</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="analytics.html">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="link_name">Analytics</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="analytics.html">Analytics</a></li>
+                </ul>
+            </li>
+            <li class="active">
+                <a href="stock.html">
+                    <i class='bx bx-package'></i>
+                    <span class="link_name">Stock</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="stock.html">Stock</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="total-orders.html">
+                    <i class='bx bx-list-ul'></i>
+                    <span class="link_name">Total Orders</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="total-orders.html">Total Orders</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="team.html">
+                    <i class='bx bx-group'></i>
+                    <span class="link_name">Team</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="team.html">Team</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="messages.html">
+                    <i class='bx bx-message'></i>
+                    <span class="link_name">Messages</span>
+                    <span class="badge">5</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="messages.html">Messages</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="favorites.html">
+                    <i class='bx bx-heart'></i>
+                    <span class="link_name">Favorites</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="favorites.html">Favorites</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="settings.html">
+                    <i class='bx bx-cog'></i>
+                    <span class="link_name">Settings</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="settings.html">Settings</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="profile-details">
+                    <div class="profile-content">
+                        <img src="../images/profile.jpg" alt="profile">
+                    </div>
+                    <div class="name-job">
+                        <div class="profile_name">Admin User</div>
+                        <div class="job">Administrator</div>
+                    </div>
+                    <i class='bx bx-log-out' id="log_out"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <section class="home-section">
+        <div class="home-content">
+            <i class='bx bx-menu'></i>
+            <span class="text">Stock Management</span>
+            
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="index.html"><i class='bx bx-home'></i> Home</a>
+                <span>/</span>
+                <span>Stock Management</span>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="header-left">
+                    <h2>Stock Inventory</h2>
+                    <p>Track and manage your product inventory</p>
+                </div>
+                <div class="header-right">
+                    <button class="btn-primary" id="addStockBtn">
+                        <i class='bx bx-plus'></i> Add Stock Movement
+                    </button>
+                    <button class="btn-secondary" id="scanBarcodeBtn">
+                        <i class='bx bx-scan'></i> Scan Barcode
+                    </button>
+                </div>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class='bx bx-package'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalProducts">245</h3>
+                        <p>Total Products</p>
+                        <span class="stat-change positive">
+                            <i class='bx bx-up-arrow-alt'></i> 12 new
+                        </span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class='bx bx-error-circle'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="lowStock">18</h3>
+                        <p>Low Stock Items</p>
+                        <span class="stat-change negative">
+                            <i class='bx bx-down-arrow-alt'></i> Needs attention
+                        </span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class='bx bx-check-shield'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="inStock">198</h3>
+                        <p>In Stock</p>
+                        <span class="stat-change positive">
+                            <i class='bx bx-up-arrow-alt'></i> 81% available
+                        </span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <i class='bx bx-x-circle'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="outOfStock">29</h3>
+                        <p>Out of Stock</p>
+                        <span class="stat-change negative">
+                            <i class='bx bx-down-arrow-alt'></i> Restock needed
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter and Actions Bar -->
+            <div class="filter-bar">
+                <div class="filter-left">
+                    <div class="search-box">
+                        <i class='bx bx-search'></i>
+                        <input type="text" id="searchStock" placeholder="Search by product name, SKU...">
+                    </div>
+                    <select class="filter-select" id="categoryFilter">
+                        <option value="">All Categories</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="clothing">Clothing</option>
+                        <option value="accessories">Accessories</option>
+                        <option value="home">Home & Living</option>
+                        <option value="sports">Sports</option>
+                    </select>
+                    <select class="filter-select" id="statusFilter">
+                        <option value="">All Status</option>
+                        <option value="in-stock">In Stock</option>
+                        <option value="low-stock">Low Stock</option>
+                        <option value="out-of-stock">Out of Stock</option>
+                        <option value="discontinued">Discontinued</option>
+                    </select>
+                </div>
+                <div class="filter-right">
+                    <button class="btn-icon" id="refreshBtn" title="Refresh">
+                        <i class='bx bx-refresh'></i>
+                    </button>
+                    <button class="btn-icon" id="exportBtn" title="Export to CSV">
+                        <i class='bx bx-download'></i>
+                    </button>
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="table" title="Table View">
+                            <i class='bx bx-list-ul'></i>
+                        </button>
+                        <button class="view-btn" data-view="grid" title="Grid View">
+                            <i class='bx bx-grid-alt'></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stock Table View -->
+            <div class="stock-view table-view active">
+                <div class="table-container">
+                    <table class="stock-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" id="selectAll">
+                                </th>
+                                <th>Product</th>
+                                <th>SKU</th>
+                                <th>Category</th>
+                                <th>Current Stock</th>
+                                <th>Min Stock</th>
+                                <th>Status</th>
+                                <th>Last Updated</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="stockTableBody">
+                            <!-- Stock Item 1 -->
+                            <tr data-product-id="1">
+                                <td><input type="checkbox" class="row-checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <div class="product-image">
+                                            <span>Nike Shoe</span>
+                                        </div>
+                                        <div class="product-info">
+                                            <h4>Nike Air Max 2024</h4>
+                                            <span class="product-variant">Size: 42 | Color: Black</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="sku">SKU-001</span></td>
+                                <td><span class="category-badge">Clothing</span></td>
+                                <td>
+                                    <div class="stock-level">
+                                        <span class="stock-number">142</span>
+                                        <div class="stock-bar">
+                                            <div class="stock-fill" style="width: 71%;"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>50</td>
+                                <td><span class="status-badge in-stock">In Stock</span></td>
+                                <td>2 hours ago</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action" title="View Details" onclick="viewStockDetails(1)">
+                                            <i class='bx bx-show'></i>
+                                        </button>
+                                        <button class="btn-action" title="Adjust Stock" onclick="adjustStock(1)">
+                                            <i class='bx bx-edit'></i>
+                                        </button>
+                                        <button class="btn-action" title="History" onclick="viewHistory(1)">
+                                            <i class='bx bx-history'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Stock Item 2 -->
+                            <tr data-product-id="2">
+                                <td><input type="checkbox" class="row-checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <div class="product-image">
+                                            <span>Adidas Shoe</span>
+                                        </div>
+                                        <div class="product-info">
+                                            <h4>Adidas Ultraboost</h4>
+                                            <span class="product-variant">Size: 40 | Color: White</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="sku">SKU-002</span></td>
+                                <td><span class="category-badge">Clothing</span></td>
+                                <td>
+                                    <div class="stock-level">
+                                        <span class="stock-number">23</span>
+                                        <div class="stock-bar">
+                                            <div class="stock-fill low" style="width: 23%;"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>50</td>
+                                <td><span class="status-badge low-stock">Low Stock</span></td>
+                                <td>5 hours ago</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action" title="View Details" onclick="viewStockDetails(2)">
+                                            <i class='bx bx-show'></i>
+                                        </button>
+                                        <button class="btn-action" title="Adjust Stock" onclick="adjustStock(2)">
+                                            <i class='bx bx-edit'></i>
+                                        </button>
+                                        <button class="btn-action" title="History" onclick="viewHistory(2)">
+                                            <i class='bx bx-history'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Stock Item 3 -->
+                            <tr data-product-id="3">
+                                <td><input type="checkbox" class="row-checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <div class="product-image">
+                                            <span>Designer Bag</span>
+                                        </div>
+                                        <div class="product-info">
+                                            <h4>Premium Leather Bag</h4>
+                                            <span class="product-variant">Color: Brown</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="sku">SKU-003</span></td>
+                                <td><span class="category-badge">Accessories</span></td>
+                                <td>
+                                    <div class="stock-level">
+                                        <span class="stock-number">0</span>
+                                        <div class="stock-bar">
+                                            <div class="stock-fill out" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>20</td>
+                                <td><span class="status-badge out-of-stock">Out of Stock</span></td>
+                                <td>1 day ago</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action" title="View Details" onclick="viewStockDetails(3)">
+                                            <i class='bx bx-show'></i>
+                                        </button>
+                                        <button class="btn-action" title="Adjust Stock" onclick="adjustStock(3)">
+                                            <i class='bx bx-edit'></i>
+                                        </button>
+                                        <button class="btn-action" title="History" onclick="viewHistory(3)">
+                                            <i class='bx bx-history'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Stock Item 4 -->
+                            <tr data-product-id="4">
+                                <td><input type="checkbox" class="row-checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <div class="product-image">
+                                            <span>Denim Jeans</span>
+                                        </div>
+                                        <div class="product-info">
+                                            <h4>Classic Denim Jeans</h4>
+                                            <span class="product-variant">Size: 32 | Color: Blue</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="sku">SKU-004</span></td>
+                                <td><span class="category-badge">Clothing</span></td>
+                                <td>
+                                    <div class="stock-level">
+                                        <span class="stock-number">87</span>
+                                        <div class="stock-bar">
+                                            <div class="stock-fill" style="width: 58%;"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>30</td>
+                                <td><span class="status-badge in-stock">In Stock</span></td>
+                                <td>3 hours ago</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action" title="View Details" onclick="viewStockDetails(4)">
+                                            <i class='bx bx-show'></i>
+                                        </button>
+                                        <button class="btn-action" title="Adjust Stock" onclick="adjustStock(4)">
+                                            <i class='bx bx-edit'></i>
+                                        </button>
+                                        <button class="btn-action" title="History" onclick="viewHistory(4)">
+                                            <i class='bx bx-history'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Stock Item 5 -->
+                            <tr data-product-id="5">
+                                <td><input type="checkbox" class="row-checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <div class="product-image">
+                                            <span>Blue Bag</span>
+                                        </div>
+                                        <div class="product-info">
+                                            <h4>Casual Tote Bag</h4>
+                                            <span class="product-variant">Color: Blue</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="sku">SKU-005</span></td>
+                                <td><span class="category-badge">Accessories</span></td>
+                                <td>
+                                    <div class="stock-level">
+                                        <span class="stock-number">156</span>
+                                        <div class="stock-bar">
+                                            <div class="stock-fill" style="width: 78%;"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>40</td>
+                                <td><span class="status-badge in-stock">In Stock</span></td>
+                                <td>1 hour ago</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action" title="View Details" onclick="viewStockDetails(5)">
+                                            <i class='bx bx-show'></i>
+                                        </button>
+                                        <button class="btn-action" title="Adjust Stock" onclick="adjustStock(5)">
+                                            <i class='bx bx-edit'></i>
+                                        </button>
+                                        <button class="btn-action" title="History" onclick="viewHistory(5)">
+                                            <i class='bx bx-history'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Stock Item 6 -->
+                            <tr data-product-id="6">
+                                <td><input type="checkbox" class="row-checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <div class="product-image">
+                                            <span>Sunglasses</span>
+                                        </div>
+                                        <div class="product-info">
+                                            <h4>Designer Sunglasses</h4>
+                                            <span class="product-variant">Style: Aviator</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="sku">SKU-006</span></td>
+                                <td><span class="category-badge">Accessories</span></td>
+                                <td>
+                                    <div class="stock-level">
+                                        <span class="stock-number">12</span>
+                                        <div class="stock-bar">
+                                            <div class="stock-fill low" style="width: 12%;"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>25</td>
+                                <td><span class="status-badge low-stock">Low Stock</span></td>
+                                <td>4 hours ago</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action" title="View Details" onclick="viewStockDetails(6)">
+                                            <i class='bx bx-show'></i>
+                                        </button>
+                                        <button class="btn-action" title="Adjust Stock" onclick="adjustStock(6)">
+                                            <i class='bx bx-edit'></i>
+                                        </button>
+                                        <button class="btn-action" title="History" onclick="viewHistory(6)">
+                                            <i class='bx bx-history'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Bulk Actions Bar -->
+                <div class="bulk-actions" id="bulkActions" style="display: none;">
+                    <span class="bulk-count">0 items selected</span>
+                    <div class="bulk-buttons">
+                        <button class="btn-bulk" id="bulkAdjustBtn">
+                            <i class='bx bx-edit'></i> Adjust Stock
+                        </button>
+                        <button class="btn-bulk" id="bulkExportBtn">
+                            <i class='bx bx-download'></i> Export Selected
+                        </button>
+                        <button class="btn-bulk danger" id="bulkDeleteBtn">
+                            <i class='bx bx-trash'></i> Delete
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="page-btn" id="prevPage">
+                        <i class='bx bx-chevron-left'></i> Previous
+                    </button>
+                    <div class="page-numbers">
+                        <button class="page-number active">1</button>
+                        <button class="page-number">2</button>
+                        <button class="page-number">3</button>
+                        <span class="page-dots">...</span>
+                        <button class="page-number">10</button>
+                    </div>
+                    <button class="page-btn" id="nextPage">
+                        Next <i class='bx bx-chevron-right'></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stock Grid View -->
+            <div class="stock-view grid-view">
+                <div class="stock-grid" id="stockGrid">
+                    <!-- Grid items will be dynamically generated -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add/Adjust Stock Modal -->
+    <div class="modal" id="stockModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Adjust Stock</h3>
+                <button class="close-modal" id="closeModal">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="stockForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productSelect">Product</label>
+                            <select id="productSelect" required>
+                                <option value="">Select Product</option>
+                                <option value="1">Nike Air Max 2024</option>
+                                <option value="2">Adidas Ultraboost</option>
+                                <option value="3">Premium Leather Bag</option>
+                                <option value="4">Classic Denim Jeans</option>
+                                <option value="5">Casual Tote Bag</option>
+                                <option value="6">Designer Sunglasses</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="currentStock">Current Stock</label>
+                            <input type="number" id="currentStock" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="movementType">Movement Type</label>
+                            <select id="movementType" required>
+                                <option value="add">Add Stock</option>
+                                <option value="remove">Remove Stock</option>
+                                <option value="adjust">Adjust Stock</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" id="quantity" min="1" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reason">Reason</label>
+                        <select id="reason" required>
+                            <option value="">Select Reason</option>
+                            <option value="purchase">New Purchase</option>
+                            <option value="return">Customer Return</option>
+                            <option value="damage">Damaged</option>
+                            <option value="sale">Sale</option>
+                            <option value="adjustment">Inventory Adjustment</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Notes (Optional)</label>
+                        <textarea id="notes" rows="3" placeholder="Add any additional notes..."></textarea>
+                    </div>
+
+                    <div class="stock-preview" id="stockPreview" style="display: none;">
+                        <h4>Preview</h4>
+                        <div class="preview-row">
+                            <span>Current Stock:</span>
+                            <strong id="previewCurrent">0</strong>
+                        </div>
+                        <div class="preview-row">
+                            <span>Change:</span>
+                            <strong id="previewChange" class="positive">+0</strong>
+                        </div>
+                        <div class="preview-row">
+                            <span>New Stock:</span>
+                            <strong id="previewNew">0</strong>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
+                        <button type="submit" class="btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stock Details Modal -->
+    <div class="modal" id="detailsModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>Stock Details</h3>
+                <button class="close-modal" id="closeDetailsModal">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="details-grid">
+                    <div class="details-left">
+                        <div class="product-detail-image">
+                            <span>Product Image</span>
+                        </div>
+                        <div class="product-detail-info">
+                            <h3 id="detailProductName">Nike Air Max 2024</h3>
+                            <p id="detailSKU">SKU-001</p>
+                            <span class="category-badge" id="detailCategory">Clothing</span>
+                        </div>
+                    </div>
+                    <div class="details-right">
+                        <div class="detail-stats">
+                            <div class="detail-stat">
+                                <span class="stat-label">Current Stock</span>
+                                <span class="stat-value" id="detailCurrentStock">142</span>
+                            </div>
+                            <div class="detail-stat">
+                                <span class="stat-label">Minimum Stock</span>
+                                <span class="stat-value" id="detailMinStock">50</span>
+                            </div>
+                            <div class="detail-stat">
+                                <span class="stat-label">Status</span>
+                                <span class="status-badge in-stock" id="detailStatus">In Stock</span>
+                            </div>
+                            <div class="detail-stat">
+                                <span class="stat-label">Last Updated</span>
+                                <span class="stat-value" id="detailLastUpdated">2 hours ago</span>
+                            </div>
+                        </div>
+
+                        <div class="stock-history">
+                            <h4>Recent Stock Movements</h4>
+                            <div class="history-timeline">
+                                <div class="history-item">
+                                    <div class="history-icon add">
+                                        <i class='bx bx-plus'></i>
+                                    </div>
+                                    <div class="history-content">
+                                        <h5>Stock Added</h5>
+                                        <p>+50 units added from new purchase</p>
+                                        <span class="history-time">2 hours ago</span>
+                                    </div>
+                                </div>
+                                <div class="history-item">
+                                    <div class="history-icon remove">
+                                        <i class='bx bx-minus'></i>
+                                    </div>
+                                    <div class="history-content">
+                                        <h5>Stock Removed</h5>
+                                        <p>-15 units sold</p>
+                                        <span class="history-time">5 hours ago</span>
+                                    </div>
+                                </div>
+                                <div class="history-item">
+                                    <div class="history-icon adjust">
+                                        <i class='bx bx-refresh'></i>
+                                    </div>
+                                    <div class="history-content">
+                                        <h5>Stock Adjusted</h5>
+                                        <p>Inventory count adjustment</p>
+                                        <span class="history-time">1 day ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/stock.js"></script>
+</body>
+</html>
+

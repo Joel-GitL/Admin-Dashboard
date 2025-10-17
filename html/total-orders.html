@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Orders | Admin</title>
+    <link rel="stylesheet" href="../css/total-orders.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class='bx bx-check-circle'></i>
+        <span class="toast-message">Action completed successfully!</span>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class='bx bx-store-alt'></i>
+            <span class="logo_name">Admin</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="index.html">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link_name">Dashboard</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="index.html">Dashboard</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="products.html">
+                    <i class='bx bx-box'></i>
+                    <span class="link_name">Product</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="products.html">Product</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="orders.html">
+                    <i class='bx bx-receipt'></i>
+                    <span class="link_name">Orders</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="orders.html">Orders</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="analytics.html">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="link_name">Analytics</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="analytics.html">Analytics</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="stock.html">
+                    <i class='bx bx-package'></i>
+                    <span class="link_name">Stock</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="stock.html">Stock</a></li>
+                </ul>
+            </li>
+            <li class="active">
+                <a href="total-orders.html">
+                    <i class='bx bx-list-ul'></i>
+                    <span class="link_name">Total Orders</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="total-orders.html">Total Orders</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="team.html">
+                    <i class='bx bx-group'></i>
+                    <span class="link_name">Team</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="team.html">Team</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="messages.html">
+                    <i class='bx bx-message'></i>
+                    <span class="link_name">Messages</span>
+                    <span class="badge">5</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="messages.html">Messages</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="favorites.html">
+                    <i class='bx bx-heart'></i>
+                    <span class="link_name">Favorites</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="favorites.html">Favorites</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="settings.html">
+                    <i class='bx bx-cog'></i>
+                    <span class="link_name">Settings</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="settings.html">Settings</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="profile-details">
+                    <div class="profile-content">
+                        <img src="../images/profile.jpg" alt="profile">
+                    </div>
+                    <div class="name-job">
+                        <div class="profile_name">Admin User</div>
+                        <div class="job">Administrator</div>
+                    </div>
+                    <i class='bx bx-log-out' id="log_out"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <section class="home-section">
+        <div class="home-content">
+            <i class='bx bx-menu'></i>
+            <span class="text">Total Orders</span>
+            
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="index.html"><i class='bx bx-home'></i> Home</a>
+                <span>/</span>
+                <span>Total Orders</span>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="header-left">
+                    <h2>Orders Overview</h2>
+                    <p>Complete view of all orders and revenue insights</p>
+                </div>
+                <div class="header-right">
+                    <button class="btn-primary" id="exportReportBtn">
+                        <i class='bx bx-download'></i> Export Report
+                    </button>
+                    <button class="btn-secondary" id="refreshDataBtn">
+                        <i class='bx bx-refresh'></i> Refresh
+                    </button>
+                </div>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class='bx bx-cart'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalOrders">15,842</h3>
+                        <p>Total Orders</p>
+                        <span class="stat-change positive">
+                            <i class='bx bx-up-arrow-alt'></i> +12.5% vs last month
+                        </span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class='bx bx-money'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalRevenue">₱3,458,234</h3>
+                        <p>Total Revenue</p>
+                        <span class="stat-change positive">
+                            <i class='bx bx-up-arrow-alt'></i> +18.2% vs last month
+                        </span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class='bx bx-trending-up'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="avgOrderValue">₱218</h3>
+                        <p>Average Order Value</p>
+                        <span class="stat-change positive">
+                            <i class='bx bx-up-arrow-alt'></i> +5.3% vs last month
+                        </span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <i class='bx bx-time-five'></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="pendingOrders">243</h3>
+                        <p>Pending Orders</p>
+                        <span class="stat-change negative">
+                            <i class='bx bx-down-arrow-alt'></i> Needs attention
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts and Filters Row -->
+            <div class="content-grid">
+                <!-- Left Column - Charts -->
+                <div class="left-column">
+                    <!-- Orders Trend Chart -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <div>
+                                <h3>Orders Trend</h3>
+                                <p>Daily orders over the last 30 days</p>
+                            </div>
+                            <div class="chart-controls">
+                                <button class="chart-btn active" data-period="7">7 Days</button>
+                                <button class="chart-btn" data-period="30">30 Days</button>
+                                <button class="chart-btn" data-period="90">90 Days</button>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <svg class="line-chart" viewBox="0 0 600 300">
+                                <!-- Grid Lines -->
+                                <g class="grid-lines">
+                                    <line x1="50" y1="250" x2="550" y2="250" stroke="#e5e7eb" stroke-width="1"/>
+                                    <line x1="50" y1="200" x2="550" y2="200" stroke="#e5e7eb" stroke-width="1"/>
+                                    <line x1="50" y1="150" x2="550" y2="150" stroke="#e5e7eb" stroke-width="1"/>
+                                    <line x1="50" y1="100" x2="550" y2="100" stroke="#e5e7eb" stroke-width="1"/>
+                                    <line x1="50" y1="50" x2="550" y2="50" stroke="#e5e7eb" stroke-width="1"/>
+                                </g>
+                                <!-- Y-axis Labels -->
+                                <g class="y-labels">
+                                    <text x="35" y="255" fill="#6b7280" font-size="12">0</text>
+                                    <text x="25" y="205" fill="#6b7280" font-size="12">250</text>
+                                    <text x="25" y="155" fill="#6b7280" font-size="12">500</text>
+                                    <text x="25" y="105" fill="#6b7280" font-size="12">750</text>
+                                    <text x="15" y="55" fill="#6b7280" font-size="12">1000</text>
+                                </g>
+                                <!-- X-axis Labels -->
+                                <g class="x-labels">
+                                    <text x="50" y="275" fill="#6b7280" font-size="11">Mon</text>
+                                    <text x="130" y="275" fill="#6b7280" font-size="11">Tue</text>
+                                    <text x="210" y="275" fill="#6b7280" font-size="11">Wed</text>
+                                    <text x="290" y="275" fill="#6b7280" font-size="11">Thu</text>
+                                    <text x="370" y="275" fill="#6b7280" font-size="11">Fri</text>
+                                    <text x="450" y="275" fill="#6b7280" font-size="11">Sat</text>
+                                    <text x="530" y="275" fill="#6b7280" font-size="11">Sun</text>
+                                </g>
+                                <!-- Area Fill -->
+                                <defs>
+                                    <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.3" />
+                                        <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0" />
+                                    </linearGradient>
+                                </defs>
+                                <path class="area-fill" d="M 50 180 L 130 150 L 210 170 L 290 120 L 370 140 L 450 100 L 530 130 L 530 250 L 50 250 Z" fill="url(#areaGradient)"/>
+                                <!-- Line -->
+                                <polyline class="trend-line" points="50,180 130,150 210,170 290,120 370,140 450,100 530,130" fill="none" stroke="#8b5cf6" stroke-width="3"/>
+                                <!-- Data Points -->
+                                <g class="data-points">
+                                    <circle cx="50" cy="180" r="5" fill="#8b5cf6"/>
+                                    <circle cx="130" cy="150" r="5" fill="#8b5cf6"/>
+                                    <circle cx="210" cy="170" r="5" fill="#8b5cf6"/>
+                                    <circle cx="290" cy="120" r="5" fill="#8b5cf6"/>
+                                    <circle cx="370" cy="140" r="5" fill="#8b5cf6"/>
+                                    <circle cx="450" cy="100" r="5" fill="#8b5cf6"/>
+                                    <circle cx="530" cy="130" r="5" fill="#8b5cf6"/>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Revenue by Payment Method -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <div>
+                                <h3>Revenue by Payment Method</h3>
+                                <p>Total: ₱3,458,234</p>
+                            </div>
+                        </div>
+                        <div class="payment-methods">
+                            <div class="payment-item">
+                                <div class="payment-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                                    <i class='bx bx-credit-card'></i>
+                                </div>
+                                <div class="payment-info">
+                                    <h4>Credit/Debit Card</h4>
+                                    <div class="payment-stats">
+                                        <span class="payment-amount">₱1,845,234</span>
+                                        <span class="payment-percent">53.3%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 53.3%; background: linear-gradient(90deg, #667eea, #764ba2);"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="payment-item">
+                                <div class="payment-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                                    <i class='bx bx-wallet'></i>
+                                </div>
+                                <div class="payment-info">
+                                    <h4>Digital Wallet</h4>
+                                    <div class="payment-stats">
+                                        <span class="payment-amount">₱1,038,234</span>
+                                        <span class="payment-percent">30.0%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 30%; background: linear-gradient(90deg, #f093fb, #f5576c);"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="payment-item">
+                                <div class="payment-icon" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+                                    <i class='bx bx-money'></i>
+                                </div>
+                                <div class="payment-info">
+                                    <h4>Cash on Delivery</h4>
+                                    <div class="payment-stats">
+                                        <span class="payment-amount">₱574,766</span>
+                                        <span class="payment-percent">16.7%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 16.7%; background: linear-gradient(90deg, #4facfe, #00f2fe);"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Status & Top Products -->
+                <div class="right-column">
+                    <!-- Order Status Distribution -->
+                    <div class="status-card">
+                        <div class="status-header">
+                            <h3>Order Status</h3>
+                            <p>Current distribution</p>
+                        </div>
+                        <div class="status-list">
+                            <div class="status-item">
+                                <div class="status-dot completed"></div>
+                                <div class="status-details">
+                                    <span class="status-name">Completed</span>
+                                    <span class="status-count">12,458</span>
+                                </div>
+                                <span class="status-percentage">78.6%</span>
+                            </div>
+
+                            <div class="status-item">
+                                <div class="status-dot pending"></div>
+                                <div class="status-details">
+                                    <span class="status-name">Pending</span>
+                                    <span class="status-count">1,842</span>
+                                </div>
+                                <span class="status-percentage">11.6%</span>
+                            </div>
+
+                            <div class="status-item">
+                                <div class="status-dot processing"></div>
+                                <div class="status-details">
+                                    <span class="status-name">Processing</span>
+                                    <span class="status-count">986</span>
+                                </div>
+                                <span class="status-percentage">6.2%</span>
+                            </div>
+
+                            <div class="status-item">
+                                <div class="status-dot cancelled"></div>
+                                <div class="status-details">
+                                    <span class="status-name">Cancelled</span>
+                                    <span class="status-count">556</span>
+                                </div>
+                                <span class="status-percentage">3.5%</span>
+                            </div>
+                        </div>
+
+                        <!-- Donut Chart -->
+                        <div class="donut-chart-container">
+                            <svg viewBox="0 0 200 200" class="donut-chart">
+                                <circle cx="100" cy="100" r="70" fill="none" stroke="#e5e7eb" stroke-width="20"/>
+                                <circle cx="100" cy="100" r="70" fill="none" stroke="#10b981" stroke-width="20" 
+                                        stroke-dasharray="346 440" stroke-dashoffset="0" transform="rotate(-90 100 100)" class="donut-segment completed-segment"/>
+                                <circle cx="100" cy="100" r="70" fill="none" stroke="#f59e0b" stroke-width="20" 
+                                        stroke-dasharray="51 440" stroke-dashoffset="-346" transform="rotate(-90 100 100)" class="donut-segment pending-segment"/>
+                                <circle cx="100" cy="100" r="70" fill="none" stroke="#3b82f6" stroke-width="20" 
+                                        stroke-dasharray="27 440" stroke-dashoffset="-397" transform="rotate(-90 100 100)" class="donut-segment processing-segment"/>
+                                <circle cx="100" cy="100" r="70" fill="none" stroke="#ef4444" stroke-width="20" 
+                                        stroke-dasharray="15 440" stroke-dashoffset="-424" transform="rotate(-90 100 100)" class="donut-segment cancelled-segment"/>
+                                <text x="100" y="95" text-anchor="middle" font-size="24" font-weight="700" fill="#1e1e2e">15,842</text>
+                                <text x="100" y="115" text-anchor="middle" font-size="12" fill="#6b7280">Total Orders</text>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Top Selling Products from Orders -->
+                    <div class="top-products-card">
+                        <div class="products-header">
+                            <h3>Top Products</h3>
+                            <p>By order quantity</p>
+                        </div>
+                        <div class="products-list">
+                            <div class="product-item">
+                                <div class="product-rank">1</div>
+                                <div class="product-image">
+                                    <span>Nike Shoe</span>
+                                </div>
+                                <div class="product-details">
+                                    <h4>Nike Air Max 2024</h4>
+                                    <span class="product-orders">2,458 orders</span>
+                                </div>
+                                <span class="product-revenue">₱589K</span>
+                            </div>
+
+                            <div class="product-item">
+                                <div class="product-rank">2</div>
+                                <div class="product-image">
+                                    <span>Adidas Shoe</span>
+                                </div>
+                                <div class="product-details">
+                                    <h4>Adidas Ultraboost</h4>
+                                    <span class="product-orders">1,842 orders</span>
+                                </div>
+                                <span class="product-revenue">₱428K</span>
+                            </div>
+
+                            <div class="product-item">
+                                <div class="product-rank">3</div>
+                                <div class="product-image">
+                                    <span>Designer Bag</span>
+                                </div>
+                                <div class="product-details">
+                                    <h4>Premium Leather Bag</h4>
+                                    <span class="product-orders">1,234 orders</span>
+                                </div>
+                                <span class="product-revenue">₱345K</span>
+                            </div>
+
+                            <div class="product-item">
+                                <div class="product-rank">4</div>
+                                <div class="product-image">
+                                    <span>Denim Jeans</span>
+                                </div>
+                                <div class="product-details">
+                                    <h4>Classic Denim Jeans</h4>
+                                    <span class="product-orders">986 orders</span>
+                                </div>
+                                <span class="product-revenue">₱198K</span>
+                            </div>
+
+                            <div class="product-item">
+                                <div class="product-rank">5</div>
+                                <div class="product-image">
+                                    <span>Blue Bag</span>
+                                </div>
+                                <div class="product-details">
+                                    <h4>Casual Tote Bag</h4>
+                                    <span class="product-orders">756 orders</span>
+                                </div>
+                                <span class="product-revenue">₱156K</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Filters Section -->
+            <div class="filters-section">
+                <div class="filters-header">
+                    <h3>Advanced Filters</h3>
+                    <button class="btn-reset" id="resetFiltersBtn">
+                        <i class='bx bx-reset'></i> Reset Filters
+                    </button>
+                </div>
+                <div class="filters-grid">
+                    <div class="filter-group">
+                        <label>Date Range</label>
+                        <div class="date-inputs">
+                            <input type="date" id="startDate" class="filter-input">
+                            <span>to</span>
+                            <input type="date" id="endDate" class="filter-input">
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Order Status</label>
+                        <select class="filter-input" id="statusFilter">
+                            <option value="">All Status</option>
+                            <option value="completed">Completed</option>
+                            <option value="pending">Pending</option>
+                            <option value="processing">Processing</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Payment Method</label>
+                        <select class="filter-input" id="paymentFilter">
+                            <option value="">All Methods</option>
+                            <option value="card">Credit/Debit Card</option>
+                            <option value="wallet">Digital Wallet</option>
+                            <option value="cod">Cash on Delivery</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Order Value</label>
+                        <select class="filter-input" id="valueFilter">
+                            <option value="">All Values</option>
+                            <option value="0-100">₱0 - ₱100</option>
+                            <option value="100-500">₱100 - ₱500</option>
+                            <option value="500-1000">₱500 - ₱1,000</option>
+                            <option value="1000+">₱1,000+</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <button class="btn-apply-filter" id="applyFiltersBtn">
+                            <i class='bx bx-filter-alt'></i> Apply Filters
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Orders Table -->
+            <div class="recent-orders-section">
+                <div class="section-header">
+                    <h3>Recent Orders</h3>
+                    <a href="orders.html" class="view-all-link">
+                        View All Orders <i class='bx bx-right-arrow-alt'></i>
+                    </a>
+                </div>
+                <div class="orders-table-container">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Date</th>
+                                <th>Items</th>
+                                <th>Total</th>
+                                <th>Payment</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="order-id">#ORD-2024-001</span></td>
+                                <td>
+                                    <div class="customer-cell">
+                                        <div class="customer-avatar">JD</div>
+                                        <span>John Doe</span>
+                                    </div>
+                                </td>
+                                <td>Oct 12, 2025</td>
+                                <td>3 items</td>
+                                <td class="amount">₱2,450</td>
+                                <td><span class="payment-badge card">Card</span></td>
+                                <td><span class="status-badge completed">Completed</span></td>
+                                <td>
+                                    <button class="btn-action" onclick="viewOrder('001')">
+                                        <i class='bx bx-show'></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="order-id">#ORD-2024-002</span></td>
+                                <td>
+                                    <div class="customer-cell">
+                                        <div class="customer-avatar">JS</div>
+                                        <span>Jane Smith</span>
+                                    </div>
+                                </td>
+                                <td>Oct 12, 2025</td>
+                                <td>2 items</td>
+                                <td class="amount">₱1,850</td>
+                                <td><span class="payment-badge wallet">Wallet</span></td>
+                                <td><span class="status-badge pending">Pending</span></td>
+                                <td>
+                                    <button class="btn-action" onclick="viewOrder('002')">
+                                        <i class='bx bx-show'></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="order-id">#ORD-2024-003</span></td>
+                                <td>
+                                    <div class="customer-cell">
+                                        <div class="customer-avatar">MJ</div>
+                                        <span>Mike Johnson</span>
+                                    </div>
+                                </td>
+                                <td>Oct 11, 2025</td>
+                                <td>5 items</td>
+                                <td class="amount">₱3,200</td>
+                                <td><span class="payment-badge cod">COD</span></td>
+                                <td><span class="status-badge processing">Processing</span></td>
+                                <td>
+                                    <button class="btn-action" onclick="viewOrder('003')">
+                                        <i class='bx bx-show'></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="order-id">#ORD-2024-004</span></td>
+                                <td>
+                                    <div class="customer-cell">
+                                        <div class="customer-avatar">EB</div>
+                                        <span>Emily Brown</span>
+                                    </div>
+                                </td>
+                                <td>Oct 11, 2025</td>
+                                <td>1 item</td>
+                                <td class="amount">₱890</td>
+                                <td><span class="payment-badge card">Card</span></td>
+                                <td><span class="status-badge completed">Completed</span></td>
+                                <td>
+                                    <button class="btn-action" onclick="viewOrder('004')">
+                                        <i class='bx bx-show'></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="order-id">#ORD-2024-005</span></td>
+                                <td>
+                                    <div class="customer-cell">
+                                        <div class="customer-avatar">DW</div>
+                                        <span>David Wilson</span>
+                                    </div>
+                                </td>
+                                <td>Oct 10, 2025</td>
+                                <td>4 items</td>
+                                <td class="amount">₱2,650</td>
+                                <td><span class="payment-badge wallet">Wallet</span></td>
+                                <td><span class="status-badge cancelled">Cancelled</span></td>
+                                <td>
+                                    <button class="btn-action" onclick="viewOrder('005')">
+                                        <i class='bx bx-show'></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../js/total-orders.js"></script>
+</body>
+</html>
+

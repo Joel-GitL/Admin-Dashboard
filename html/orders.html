@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders Management | Admin</title>
+    <link rel="stylesheet" href="../css/orders.css">
+    <link rel="stylesheet" href="../css/orders-enhanced.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class='bx bx-store-alt'></i>
+            <span class="logo_name">Admin</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="index.html">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link_name">Dashboard</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="index.html">Dashboard</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="products.html">
+                    <i class='bx bx-box'></i>
+                    <span class="link_name">Product</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="products.html">Product</a></li>
+                </ul>
+            </li>
+            <li class="active">
+                <a href="orders.html">
+                    <i class='bx bx-receipt'></i>
+                    <span class="link_name">Orders</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="orders.html">Orders</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="analytics.html">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="link_name">Analytics</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="analytics.html">Analytics</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="stock.html">
+                    <i class='bx bx-package'></i>
+                    <span class="link_name">Stock</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="stock.html">Stock</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="total-orders.html">
+                    <i class='bx bx-list-ul'></i>
+                    <span class="link_name">Total Orders</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="total-orders.html">Total Orders</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="team.html">
+                    <i class='bx bx-group'></i>
+                    <span class="link_name">Team</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="team.html">Team</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="messages.html">
+                    <i class='bx bx-message'></i>
+                    <span class="link_name">Messages</span>
+                    <span class="badge">5</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="messages.html">Messages</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="favorites.html">
+                    <i class='bx bx-heart'></i>
+                    <span class="link_name">Favorites</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="favorites.html">Favorites</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="settings.html">
+                    <i class='bx bx-cog'></i>
+                    <span class="link_name">Settings</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="settings.html">Settings</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="profile-details">
+                    <div class="profile-content">
+                        <img src="../images/profile.jpg" alt="profile">
+                    </div>
+                    <div class="name-job">
+                        <div class="profile_name">Admin User</div>
+                        <div class="job">Administrator</div>
+                    </div>
+                    <i class='bx bx-log-out' id="log_out"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <section class="home-section">
+        <div class="home-content">
+            <i class='bx bx-menu'></i>
+            <span class="text">Orders Management</span>
+        </div>
+
+        <!-- Orders Container -->
+        <div class="orders-container">
+            <!-- Status Cards -->
+            <div class="status-cards">
+                <div class="status-card pending">
+                    <div class="status-number">124</div>
+                    <div class="status-label">Pending Orders</div>
+                    <div class="metric-change positive">
+                        <i class='bx bx-up-arrow-alt'></i>
+                        <span>12%</span>
+                    </div>
+                </div>
+                <div class="status-card completed">
+                    <div class="status-number">856</div>
+                    <div class="status-label">Completed</div>
+                    <div class="metric-change positive">
+                        <i class='bx bx-up-arrow-alt'></i>
+                        <span>8%</span>
+                    </div>
+                </div>
+                <div class="status-card processing">
+                    <div class="status-number">45</div>
+                    <div class="status-label">Processing</div>
+                    <div class="metric-change positive">
+                        <i class='bx bx-up-arrow-alt'></i>
+                        <span>5%</span>
+                    </div>
+                </div>
+                <div class="status-card cancelled">
+                    <div class="status-number">12</div>
+                    <div class="status-label">Cancelled</div>
+                    <div class="metric-change negative">
+                        <i class='bx bx-down-arrow-alt'></i>
+                        <span>3%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders Table -->
+            <div class="orders-table-container">
+                <div class="table-header">
+                    <div class="table-title">Recent Orders</div>
+                    <div class="table-controls">
+                        <div class="search-box">
+                            <i class='bx bx-search'></i>
+                            <input type="text" placeholder="Search orders...">
+                        </div>
+                        <button class="btn-modern btn-primary">
+                            <i class='bx bx-plus'></i>
+                            New Order
+                        </button>
+                        <button class="btn-modern btn-secondary">
+                            <i class='bx bx-download'></i>
+                            Export
+                        </button>
+                    </div>
+                </div>
+
+                
+                <table class="modern-table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="selectAll"></th>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Date</th>
+                            <th>Items</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" class="order-checkbox"></td>
+                            <td><strong>#ORD-2345</strong></td>
+                            <td>
+                                <div class="customer-cell">
+                                    <div class="customer-avatar">JD</div>
+                                    <div class="customer-details">
+                                        <div class="customer-name">John Doe</div>
+                                        <div class="customer-email">john.doe@email.com</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div>Oct 10, 2025</div>
+                                <small class="text-muted">2:30 PM</small>
+                            </td>
+                            <td>3 items</td>
+                            <td><strong>₱12,450.00</strong></td>
+                            <td><span class="order-status completed">Completed</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn view" title="View">
+                                        <i class='bx bx-show'></i>
+                                    </button>
+                                    <button class="action-btn edit" title="Edit">
+                                        <i class='bx bx-edit'></i>
+                                    </button>
+                                    <button class="action-btn delete" title="Delete">
+                                        <i class='bx bx-trash'></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="order-checkbox"></td>
+                            <td><strong>#ORD-2346</strong></td>
+                            <td>
+                                <div class="customer-cell">
+                                    <div class="customer-avatar">MS</div>
+                                    <div class="customer-details">
+                                        <div class="customer-name">Maria Santos</div>
+                                        <div class="customer-email">maria.s@email.com</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div>Oct 11, 2025</div>
+                                <small class="text-muted">10:15 AM</small>
+                            </td>
+                            <td>5 items</td>
+                            <td><strong>₱23,890.00</strong></td>
+                            <td><span class="order-status processing">Processing</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn view" title="View">
+                                        <i class='bx bx-show'></i>
+                                    </button>
+                                    <button class="action-btn edit" title="Edit">
+                                        <i class='bx bx-edit'></i>
+                                    </button>
+                                    <button class="action-btn delete" title="Delete">
+                                        <i class='bx bx-trash'></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="order-checkbox"></td>
+                            <td><strong>#ORD-2347</strong></td>
+                            <td>
+                                <div class="customer-cell">
+                                    <div class="customer-avatar">RC</div>
+                                    <div class="customer-details">
+                                        <div class="customer-name">Robert Cruz</div>
+                                        <div class="customer-email">r.cruz@email.com</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div>Oct 11, 2025</div>
+                                <small class="text-muted">3:45 PM</small>
+                            </td>
+                            <td>2 items</td>
+                            <td><strong>₱8,500.00</strong></td>
+                            <td><span class="order-status pending">Pending</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn view" title="View">
+                                        <i class='bx bx-show'></i>
+                                    </button>
+                                    <button class="action-btn edit" title="Edit">
+                                        <i class='bx bx-edit'></i>
+                                    </button>
+                                    <button class="action-btn delete" title="Delete">
+                                        <i class='bx bx-trash'></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="order-checkbox"></td>
+                            <td><strong>#ORD-2348</strong></td>
+                            <td>
+                                <div class="customer-cell">
+                                    <div class="customer-avatar">AL</div>
+                                    <div class="customer-details">
+                                        <div class="customer-name">Anna Lopez</div>
+                                        <div class="customer-email">anna.l@email.com</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div>Oct 12, 2025</div>
+                                <small class="text-muted">11:20 AM</small>
+                            </td>
+                            <td>1 item</td>
+                            <td><strong>₱4,250.00</strong></td>
+                            <td><span class="order-status cancelled">Cancelled</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn view" title="View">
+                                        <i class='bx bx-show'></i>
+                                    </button>
+                                    <button class="action-btn edit" title="Edit">
+                                        <i class='bx bx-edit'></i>
+                                    </button>
+                                    <button class="action-btn delete" title="Delete">
+                                        <i class='bx bx-trash'></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="order-checkbox"></td>
+                            <td><strong>#ORD-2349</strong></td>
+                            <td>
+                                <div class="customer-cell">
+                                    <div class="customer-avatar">PR</div>
+                                    <div class="customer-details">
+                                        <div class="customer-name">Peter Reyes</div>
+                                        <div class="customer-email">p.reyes@email.com</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div>Oct 12, 2025</div>
+                                <small class="text-muted">4:30 PM</small>
+                            </td>
+                            <td>7 items</td>
+                            <td><strong>₱31,200.00</strong></td>
+                            <td><span class="order-status completed">Completed</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn view" title="View">
+                                        <i class='bx bx-show'></i>
+                                    </button>
+                                    <button class="action-btn edit" title="Edit">
+                                        <i class='bx bx-edit'></i>
+                                    </button>
+                                    <button class="action-btn delete" title="Delete">
+                                        <i class='bx bx-trash'></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Order Timeline Example (Optional Section) -->
+            <div class="orders-table-container" style="margin-top: 24px;">
+                <div class="table-header">
+                    <div class="table-title">Order Timeline - #ORD-2345</div>
+                </div>
+                
+                <div class="order-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-icon completed">
+                            <i class='bx bx-check'></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Order Delivered</div>
+                            <div class="timeline-desc">Package delivered successfully to customer</div>
+                            <div class="timeline-date">Oct 15, 2025 - 3:45 PM</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon completed">
+                            <i class='bx bx-package'></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Out for Delivery</div>
+                            <div class="timeline-desc">Package is out for delivery</div>
+                            <div class="timeline-date">Oct 15, 2025 - 8:30 AM</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon completed">
+                            <i class='bx bx-cube'></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Shipped</div>
+                            <div class="timeline-desc">Order has been shipped from warehouse</div>
+                            <div class="timeline-date">Oct 13, 2025 - 2:15 PM</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon completed">
+                            <i class='bx bx-box'></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Order Processed</div>
+                            <div class="timeline-desc">Order is being prepared for shipment</div>
+                            <div class="timeline-date">Oct 11, 2025 - 10:20 AM</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon completed">
+                            <i class='bx bx-cart'></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Order Placed</div>
+                            <div class="timeline-desc">Customer placed the order</div>
+                            <div class="timeline-date">Oct 10, 2025 - 2:30 PM</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filters-row">
+                    <div class="filter-group">
+                        <div class="search-input-wrapper">
+                            <i class="bx bx-search"></i>
+                            <input type="text" class="filter-input" placeholder="Search by order ID, customer..." id="orderSearch">
+                        </div>
+                        
+                        <select class="filter-select" id="statusFilter">
+                            <option value="">All Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="processing">Processing</option>
+                            <option value="shipped">Shipped</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                        
+                        <select class="filter-select" id="paymentFilter">
+                            <option value="">All Payment Methods</option>
+                            <option value="credit-card">Credit Card</option>
+                            <option value="debit-card">Debit Card</option>
+                            <option value="gcash">GCash</option>
+                            <option value="paypal">PayPal</option>
+                            <option value="cod">Cash on Delivery</option>
+                        </select>
+                        
+                        <input type="date" class="filter-input date-input" id="dateFromFilter" placeholder="From Date">
+                        <input type="date" class="filter-input date-input" id="dateToFilter" placeholder="To Date">
+                    </div>
+                    
+                    <div class="view-controls">
+                        <button class="btn btn-secondary" id="clearFiltersBtn">
+                            <i class="bx bx-reset"></i>
+                            Clear Filters
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Bulk Actions Bar -->
+                <div class="bulk-actions-bar" id="bulkActionsBar" style="display: none;">
+                    <span class="selected-count">0 orders selected</span>
+                    <div class="bulk-buttons">
+                        <button class="btn btn-sm btn-secondary" id="bulkUpdateStatusBtn">
+                            <i class="bx bx-edit"></i> Update Status
+                        </button>
+                        <button class="btn btn-sm btn-secondary" id="bulkExportBtn">
+                            <i class="bx bx-export"></i> Export Selected
+                        </button>
+                        <button class="btn btn-sm btn-danger" id="bulkCancelBtn">
+                            <i class="bx bx-x-circle"></i> Cancel Orders
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders Table -->
+            <div class="orders-table-container">
+                <table class="orders-table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="selectAll"></th>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Date</th>
+                            <th>Items</th>
+                            <th>Amount</th>
+                            <th>Payment</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTableBody">
+                        <!-- Order Row 1 -->
+                        <tr data-status="delivered" data-payment="credit-card">
+                            <td><input type="checkbox" class="order-checkbox"></td>
+                            <td><strong class="order-id">#ORD-2345</strong></td>
+                            <td>
+                                <div class="customer-info">
+                                    <div class="customer-avatar">JD</div>
+                                    <div>
+                                        <div class="customer-name">John Doe</div>
+                                        <div class="customer-email">john.doe@email.com</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Oct 10, 2025<br><span class="time">2:30 PM</span></td>
+                            <td>3 items</td>
+                            <td><strong>₱12,450.00</strong></td>
+                            <td><span class="payment-badge credit-card"><i class="bx bx-credit-card"></i> Credit Card</span></td>
+                            <td><span class="status-badge status-delivered">Delivered</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-action view-order" title="View Details">
+                                        <i class="bx bx-show"></i>
+                                    </button>
+                                    <button class="btn-action print-invoice" title="Print Invoice">
+                                        <i class="bx bx-printer"></i>
+                                    </button>
+                                    <button class="btn-action more-actions" title="More">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Order Row 2 -->
+                        <tr data-status="processing" data-payment="gcash">
+                            <td><input type="checkbox" class="order-checkbox"></td>
+                            <td><strong class="order-id">#ORD-2344</strong></td>
+                            <td>
+                                <div class="customer-info">
+                                    <div class="customer-avatar">MS</div>
+                                    <div>
+                                        <div class="customer-name">Maria Santos</div>
+                                        <div class="customer-email">maria.s@email.com</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Oct 10, 2025<br><span class="time">11:15 AM</span></td>
+                            <td>5 items</td>
+                            <td><strong>₱8,750.00</strong></td>
+                            <td><span class="payment-badge gcash"><i class="bx bx-mobile"></i> GCash</span></td>
+                            <td><span class="status-badge status-processing">Processing</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-action view-order" title="View Details">
+                                        <i class="bx bx-show"></i>
+                                    </button>
+                                    <button class="btn-action print-invoice" title="Print Invoice">
+                                        <i class="bx bx-printer"></i>
+                                    </button>
+                                    <button class="btn-action more-actions" title="More">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Order Row 3 -->
+                        <tr data-status="pending" data-payment="cod">
+                            <td><input type="checkbox" class="order-checkbox"></td>
+                            <td><strong class="order-id">#ORD-2343</strong></td>
+                            <td>
+                                <div class="customer-info">
+                                    <div class="customer-avatar">RC</div>
+                                    <div>
+                                        <div class="customer-name">Robert Cruz</div>
+                                        <div class="customer-email">robert.c@email.com</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Oct 9, 2025<br><span class="time">4:45 PM</span></td>
+                            <td>2 items</td>
+                            <td><strong>₱5,299.00</strong></td>
+                            <td><span class="payment-badge cod"><i class="bx bx-money"></i> COD</span></td>
+                            <td><span class="status-badge status-pending">Pending</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-action view-order" title="View Details">
+                                        <i class="bx bx-show"></i>
+                                    </button>
+                                    <button class="btn-action print-invoice" title="Print Invoice">
+                                        <i class="bx bx-printer"></i>
+                                    </button>
+                                    <button class="btn-action more-actions" title="More">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Order Row 4 -->
+                        <tr data-status="shipped" data-payment="paypal">
+                            <td><input type="checkbox" class="order-checkbox"></td>
+                            <td><strong class="order-id">#ORD-2342</strong></td>
+                            <td>
+                                <div class="customer-info">
+                                    <div class="customer-avatar">AL</div>
+                                    <div>
+                                        <div class="customer-name">Anna Lopez</div>
+                                        <div class="customer-email">anna.lopez@email.com</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Oct 9, 2025<br><span class="time">9:20 AM</span></td>
+                            <td>4 items</td>
+                            <td><strong>₱15,800.00</strong></td>
+                            <td><span class="payment-badge paypal"><i class="bx bxl-paypal"></i> PayPal</span></td>
+                            <td><span class="status-badge status-shipped">Shipped</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-action view-order" title="View Details">
+                                        <i class="bx bx-show"></i>
+                                    </button>
+                                    <button class="btn-action print-invoice" title="Print Invoice">
+                                        <i class="bx bx-printer"></i>
+                                    </button>
+                                    <button class="btn-action more-actions" title="More">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Order Row 5 -->
+                        <tr data-status="cancelled" data-payment="debit-card">
+                            <td><input type="checkbox" class="order-checkbox"></td>
+                            <td><strong class="order-id">#ORD-2341</strong></td>
+                            <td>
+                                <div class="customer-info">
+                                    <div class="customer-avatar">PG</div>
+                                    <div>
+                                        <div class="customer-name">Pedro Garcia</div>
+                                        <div class="customer-email">pedro.g@email.com</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Oct 8, 2025<br><span class="time">3:10 PM</span></td>
+                            <td>1 item</td>
+                            <td><strong>₱2,999.00</strong></td>
+                            <td><span class="payment-badge debit-card"><i class="bx bx-credit-card"></i> Debit Card</span></td>
+                            <td><span class="status-badge status-cancelled">Cancelled</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-action view-order" title="View Details">
+                                        <i class="bx bx-show"></i>
+                                    </button>
+                                    <button class="btn-action print-invoice" title="Print Invoice">
+                                        <i class="bx bx-printer"></i>
+                                    </button>
+                                    <button class="btn-action more-actions" title="More">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Order Row 6 -->
+                        <tr data-status="delivered" data-payment="credit-card">
+                            <td><input type="checkbox" class="order-checkbox"></td>
+                            <td><strong class="order-id">#ORD-2340</strong></td>
+                            <td>
+                                <div class="customer-info">
+                                    <div class="customer-avatar">LR</div>
+                                    <div>
+                                        <div class="customer-name">Lisa Reyes</div>
+                                        <div class="customer-email">lisa.reyes@email.com</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Oct 8, 2025<br><span class="time">10:30 AM</span></td>
+                            <td>6 items</td>
+                            <td><strong>₱22,450.00</strong></td>
+                            <td><span class="payment-badge credit-card"><i class="bx bx-credit-card"></i> Credit Card</span></td>
+                            <td><span class="status-badge status-delivered">Delivered</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-action view-order" title="View Details">
+                                        <i class="bx bx-show"></i>
+                                    </button>
+                                    <button class="btn-action print-invoice" title="Print Invoice">
+                                        <i class="bx bx-printer"></i>
+                                    </button>
+                                    <button class="btn-action more-actions" title="More">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <div class="pagination-info">
+                    Showing 1-6 of 248 orders
+                </div>
+                <div class="pagination-controls">
+                    <button class="btn-pagination" disabled>
+                        <i class="bx bx-chevron-left"></i>
+                    </button>
+                    <button class="btn-pagination active">1</button>
+                    <button class="btn-pagination">2</button>
+                    <button class="btn-pagination">3</button>
+                    <span class="pagination-dots">...</span>
+                    <button class="btn-pagination">42</button>
+                    <button class="btn-pagination">
+                        <i class="bx bx-chevron-right"></i>
+                    </button>
+                </div>
+                <select class="items-per-page">
+                    <option value="6" selected>6 per page</option>
+                    <option value="10">10 per page</option>
+                    <option value="25">25 per page</option>
+                    <option value="50">50 per page</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Details Modal -->
+    <div class="modal" id="orderDetailsModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2>Order Details</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Order Header Info -->
+                <div class="order-header-info">
+                    <div class="order-info-section">
+                        <h3>Order #ORD-2345</h3>
+                        <p class="order-date">Placed on October 10, 2025 at 2:30 PM</p>
+                    </div>
+                    <div class="order-status-section">
+                        <span class="status-badge status-delivered">Delivered</span>
+                    </div>
+                </div>
+
+                <!-- Order Tracking -->
+                <div class="order-tracking">
+                    <h3>Order Tracking</h3>
+                    <div class="tracking-timeline">
+                        <div class="tracking-step completed">
+                            <div class="step-icon"><i class="bx bx-check"></i></div>
+                            <div class="step-content">
+                                <div class="step-title">Order Placed</div>
+                                <div class="step-date">Oct 10, 2025 - 2:30 PM</div>
+                            </div>
+                        </div>
+                        <div class="tracking-step completed">
+                            <div class="step-icon"><i class="bx bx-check"></i></div>
+                            <div class="step-content">
+                                <div class="step-title">Processing</div>
+                                <div class="step-date">Oct 10, 2025 - 3:45 PM</div>
+                            </div>
+                        </div>
+                        <div class="tracking-step completed">
+                            <div class="step-icon"><i class="bx bx-check"></i></div>
+                            <div class="step-content">
+                                <div class="step-title">Shipped</div>
+                                <div class="step-date">Oct 11, 2025 - 9:20 AM</div>
+                            </div>
+                        </div>
+                        <div class="tracking-step completed">
+                            <div class="step-icon"><i class="bx bx-check"></i></div>
+                            <div class="step-content">
+                                <div class="step-title">Delivered</div>
+                                <div class="step-date">Oct 12, 2025 - 10:15 AM</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customer & Shipping Info -->
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4><i class="bx bx-user"></i> Customer Information</h4>
+                        <p><strong>John Doe</strong></p>
+                        <p>john.doe@email.com</p>
+                        <p>+63 912 345 6789</p>
+                    </div>
+                    <div class="info-card">
+                        <h4><i class="bx bx-map"></i> Shipping Address</h4>
+                        <p>123 Main Street, Barangay 5</p>
+                        <p>Quezon City, Metro Manila</p>
+                        <p>Philippines, 1100</p>
+                    </div>
+                    <div class="info-card">
+                        <h4><i class="bx bx-credit-card"></i> Payment Information</h4>
+                        <p><strong>Credit Card</strong></p>
+                        <p>**** **** **** 4532</p>
+                        <p>Status: <span class="text-success">Paid</span></p>
+                    </div>
+                </div>
+
+                <!-- Order Items -->
+                <div class="order-items">
+                    <h3>Order Items</h3>
+                    <table class="items-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="product-cell">
+                                        <div class="product-img-placeholder"></div>
+                                        <span>Premium Wireless Headphones</span>
+                                    </div>
+                                </td>
+                                <td>₱5,999.00</td>
+                                <td>1</td>
+                                <td><strong>₱5,999.00</strong></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="product-cell">
+                                        <div class="product-img-placeholder"></div>
+                                        <span>Smart Watch Pro Series 5</span>
+                                    </div>
+                                </td>
+                                <td>₱12,999.00</td>
+                                <td>1</td>
+                                <td><strong>₱12,999.00</strong></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="product-cell">
+                                        <div class="product-img-placeholder"></div>
+                                        <span>Premium Cotton T-Shirt</span>
+                                    </div>
+                                </td>
+                                <td>₱799.00</td>
+                                <td>2</td>
+                                <td><strong>₱1,598.00</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="order-summary">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span>₱20,596.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping:</span>
+                        <span>₱150.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax:</span>
+                        <span>₱1,704.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span>₱22,450.00</span>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" id="printInvoiceBtn">
+                        <i class="bx bx-printer"></i>
+                        Print Invoice
+                    </button>
+                    <button class="btn btn-primary" id="updateStatusBtn">
+                        <i class="bx bx-edit"></i>
+                        Update Status
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/orders.js"></script>
+</body>
+</html>
+

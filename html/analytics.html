@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard | Admin</title>
+    <link rel="stylesheet" href="../css/analytics.css">
+    <link rel="stylesheet" href="../css/analytics-enhanced.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class='bx bx-store-alt'></i>
+            <span class="logo_name">Admin</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="index.html">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link_name">Dashboard</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="index.html">Dashboard</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="products.html">
+                    <i class='bx bx-box'></i>
+                    <span class="link_name">Product</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="products.html">Product</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="orders.html">
+                    <i class='bx bx-receipt'></i>
+                    <span class="link_name">Orders</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="orders.html">Orders</a></li>
+                </ul>
+            </li>
+            <li class="active">
+                <a href="analytics.html">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="link_name">Analytics</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="analytics.html">Analytics</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="stock.html">
+                    <i class='bx bx-package'></i>
+                    <span class="link_name">Stock</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="stock.html">Stock</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="total-orders.html">
+                    <i class='bx bx-list-ul'></i>
+                    <span class="link_name">Total Orders</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="total-orders.html">Total Orders</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="team.html">
+                    <i class='bx bx-group'></i>
+                    <span class="link_name">Team</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="team.html">Team</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="messages.html">
+                    <i class='bx bx-message'></i>
+                    <span class="link_name">Messages</span>
+                    <span class="badge">5</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="messages.html">Messages</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="favorites.html">
+                    <i class='bx bx-heart'></i>
+                    <span class="link_name">Favorites</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="favorites.html">Favorites</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="settings.html">
+                    <i class='bx bx-cog'></i>
+                    <span class="link_name">Settings</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="settings.html">Settings</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="profile-details">
+                    <div class="profile-content">
+                        <img src="../images/profile.jpg" alt="profile">
+                    </div>
+                    <div class="name-job">
+                        <div class="profile_name">Admin User</div>
+                        <div class="job">Administrator</div>
+                    </div>
+                    <i class='bx bx-log-out' id="log_out"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <section class="home-section">
+        <div class="home-content">
+            <i class='bx bx-menu'></i>
+            <span class="text">Analytics Dashboard</span>
+        </div>
+
+        <!-- Analytics Container -->
+        <div class="analytics-container">
+            <!-- Metrics Grid -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-icon revenue">
+                        <i class='bx bx-dollar-circle'></i>
+                    </div>
+                    <div class="metric-info">
+                        <div class="metric-label">Total Revenue</div>
+                        <div class="metric-value">₱2,458,234</div>
+                        <div class="metric-change">
+                            <span class="trend-indicator positive">
+                                <i class='bx bx-trending-up'></i>
+                                15.3%
+                            </span>
+                            <span class="change-text">vs last month</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon users">
+                        <i class='bx bx-user'></i>
+                    </div>
+                    <div class="metric-info">
+                        <div class="metric-label">Total Users</div>
+                        <div class="metric-value">48,234</div>
+                        <div class="metric-change">
+                            <span class="trend-indicator positive">
+                                <i class='bx bx-trending-up'></i>
+                                8.7%
+                            </span>
+                            <span class="change-text">vs last month</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon orders">
+                        <i class='bx bx-shopping-bag'></i>
+                    </div>
+                    <div class="metric-info">
+                        <div class="metric-label">Total Orders</div>
+                        <div class="metric-value">12,458</div>
+                        <div class="metric-change">
+                            <span class="trend-indicator negative">
+                                <i class='bx bx-trending-down'></i>
+                                2.4%
+                            </span>
+                            <span class="change-text">vs last month</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon growth">
+                        <i class='bx bx-line-chart'></i>
+                    </div>
+                    <div class="metric-info">
+                        <div class="metric-label">Growth Rate</div>
+                        <div class="metric-value">23.5%</div>
+                        <div class="metric-change">
+                            <span class="trend-indicator positive">
+                                <i class='bx bx-trending-up'></i>
+                                5.2%
+                            </span>
+                            <span class="change-text">vs last month</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-section">
+                <!-- Revenue Chart -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <div class="chart-title">
+                            <h3>Revenue Overview</h3>
+                            <p>Monthly revenue trends and comparisons</p>
+                        </div>
+                        <div class="chart-controls">
+                            <button class="period-btn active">Day</button>
+                            <button class="period-btn">Week</button>
+                            <button class="period-btn">Month</button>
+                            <button class="period-btn">Year</button>
+                        </div>
+                    </div>
+                    <div class="chart-placeholder">
+                        <i class='bx bx-line-chart'></i>
+                        <span>Chart Placeholder - Revenue Data</span>
+                    </div>
+                    <div class="chart-stats">
+                        <div class="stat-item">
+                            <div class="stat-label">Average</div>
+                            <div class="stat-value">₱82,450</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Highest</div>
+                            <div class="stat-value">₱125,340</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Lowest</div>
+                            <div class="stat-value">₱45,230</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Analytics Chart -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <div class="chart-title">
+                            <h3>User Analytics</h3>
+                            <p>Active users and engagement metrics</p>
+                        </div>
+                        <div class="chart-controls">
+                            <button class="period-btn active">Day</button>
+                            <button class="period-btn">Week</button>
+                            <button class="period-btn">Month</button>
+                            <button class="period-btn">Year</button>
+                        </div>
+                    </div>
+                    <div class="chart-placeholder">
+                        <i class='bx bx-bar-chart'></i>
+                        <span>Chart Placeholder - User Activity</span>
+                    </div>
+                    <div class="chart-stats">
+                        <div class="stat-item">
+                            <div class="stat-label">Daily Avg</div>
+                            <div class="stat-value">2,845</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Peak</div>
+                            <div class="stat-value">5,234</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Active Now</div>
+                            <div class="stat-value">1,234</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Metrics -->
+            <div class="progress-section">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <div class="chart-title">
+                            <h3>Performance Metrics</h3>
+                            <p>Key performance indicators progress</p>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-list">
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span class="progress-label">Sales Target</span>
+                                <span class="progress-percentage">85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span class="progress-label">Customer Satisfaction</span>
+                                <span class="progress-percentage">92%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 92%"></div>
+                            </div>
+                        </div>
+
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span class="progress-label">Order Fulfillment</span>
+                                <span class="progress-percentage">78%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 78%"></div>
+                            </div>
+                        </div>
+
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span class="progress-label">Product Quality</span>
+                                <span class="progress-percentage">95%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                        <p class="metric-desc">Compared to last month</p>
+                    </div>
+                    <div class="metric-chart" id="revenueSparkline">
+                        <!-- Placeholder: Mini sparkline chart - revenue trend -->
+                        <div class="sparkline-placeholder">
+                            <div class="sparkline-bar" style="height: 40%"></div>
+                            <div class="sparkline-bar" style="height: 55%"></div>
+                            <div class="sparkline-bar" style="height: 45%"></div>
+                            <div class="sparkline-bar" style="height: 70%"></div>
+                            <div class="sparkline-bar" style="height: 60%"></div>
+                            <div class="sparkline-bar" style="height: 85%"></div>
+                            <div class="sparkline-bar" style="height: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-card metric-card-2">
+                    <div class="metric-header">
+                        <div class="metric-icon">
+                            <i class="bx bx-shopping-bag"></i>
+                        </div>
+                        <div class="metric-trend positive">
+                            <i class="bx bx-trending-up"></i>
+                            <span>+8.7%</span>
+                        </div>
+                    </div>
+                    <div class="metric-body">
+                        <h3>Total Orders</h3>
+                        <div class="metric-value">12,543</div>
+                        <p class="metric-desc">Orders this month</p>
+                    </div>
+                    <div class="metric-chart" id="ordersSparkline">
+                        <div class="sparkline-placeholder">
+                            <div class="sparkline-bar" style="height: 60%"></div>
+                            <div class="sparkline-bar" style="height: 70%"></div>
+                            <div class="sparkline-bar" style="height: 55%"></div>
+                            <div class="sparkline-bar" style="height: 80%"></div>
+                            <div class="sparkline-bar" style="height: 75%"></div>
+                            <div class="sparkline-bar" style="height: 90%"></div>
+                            <div class="sparkline-bar" style="height: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-card metric-card-3">
+                    <div class="metric-header">
+                        <div class="metric-icon">
+                            <i class="bx bx-user"></i>
+                        </div>
+                        <div class="metric-trend positive">
+                            <i class="bx bx-trending-up"></i>
+                            <span>+12.5%</span>
+                        </div>
+                    </div>
+                    <div class="metric-body">
+                        <h3>New Customers</h3>
+                        <div class="metric-value">3,842</div>
+                        <p class="metric-desc">New registrations</p>
+                    </div>
+                    <div class="metric-chart" id="customersSparkline">
+                        <div class="sparkline-placeholder">
+                            <div class="sparkline-bar" style="height: 50%"></div>
+                            <div class="sparkline-bar" style="height: 65%"></div>
+                            <div class="sparkline-bar" style="height: 60%"></div>
+                            <div class="sparkline-bar" style="height: 75%"></div>
+                            <div class="sparkline-bar" style="height: 85%"></div>
+                            <div class="sparkline-bar" style="height: 95%"></div>
+                            <div class="sparkline-bar" style="height: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-card metric-card-4">
+                    <div class="metric-header">
+                        <div class="metric-icon">
+                            <i class="bx bx-line-chart"></i>
+                        </div>
+                        <div class="metric-trend negative">
+                            <i class="bx bx-trending-down"></i>
+                            <span>-2.4%</span>
+                        </div>
+                    </div>
+                    <div class="metric-body">
+                        <h3>Conversion Rate</h3>
+                        <div class="metric-value">3.24%</div>
+                        <p class="metric-desc">Average conversion</p>
+                    </div>
+                    <div class="metric-chart" id="conversionSparkline">
+                        <div class="sparkline-placeholder">
+                            <div class="sparkline-bar" style="height: 100%"></div>
+                            <div class="sparkline-bar" style="height: 90%"></div>
+                            <div class="sparkline-bar" style="height: 85%"></div>
+                            <div class="sparkline-bar" style="height: 75%"></div>
+                            <div class="sparkline-bar" style="height: 70%"></div>
+                            <div class="sparkline-bar" style="height: 65%"></div>
+                            <div class="sparkline-bar" style="height: 60%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row 1 -->
+            <div class="charts-row">
+                <!-- Sales Trend Chart -->
+                <div class="chart-card chart-large">
+                    <div class="chart-header">
+                        <div>
+                            <h3>Sales Trend</h3>
+                            <p>Revenue over time</p>
+                        </div>
+                        <div class="chart-controls">
+                            <button class="chart-btn active" data-period="week">Week</button>
+                            <button class="chart-btn" data-period="month">Month</button>
+                            <button class="chart-btn" data-period="year">Year</button>
+                        </div>
+                    </div>
+                    <div class="chart-body">
+                        <!-- Placeholder: Line Chart - Sales Trend -->
+                        <div class="chart-placeholder line-chart">
+                            <div class="chart-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background: #667eea"></span>
+                                    <span>Revenue</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background: #f5576c"></span>
+                                    <span>Target</span>
+                                </div>
+                            </div>
+                            <div class="line-chart-area">
+                                <svg viewBox="0 0 400 200" class="chart-svg">
+                                    <!-- Grid lines -->
+                                    <line x1="0" y1="40" x2="400" y2="40" stroke="#e5e7eb" stroke-width="1"/>
+                                    <line x1="0" y1="80" x2="400" y2="80" stroke="#e5e7eb" stroke-width="1"/>
+                                    <line x1="0" y1="120" x2="400" y2="120" stroke="#e5e7eb" stroke-width="1"/>
+                                    <line x1="0" y1="160" x2="400" y2="160" stroke="#e5e7eb" stroke-width="1"/>
+                                    
+                                    <!-- Revenue line -->
+                                    <polyline points="0,160 50,140 100,150 150,120 200,130 250,100 300,110 350,80 400,90" 
+                                              fill="none" stroke="#667eea" stroke-width="3" stroke-linecap="round"/>
+                                    
+                                    <!-- Target line (dashed) -->
+                                    <polyline points="0,100 50,95 100,90 150,85 200,88 250,82 300,80 350,78 400,75" 
+                                              fill="none" stroke="#f5576c" stroke-width="2" stroke-dasharray="5,5"/>
+                                </svg>
+                                <div class="chart-labels">
+                                    <span>Jan</span>
+                                    <span>Feb</span>
+                                    <span>Mar</span>
+                                    <span>Apr</span>
+                                    <span>May</span>
+                                    <span>Jun</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Revenue Distribution -->
+                <div class="chart-card chart-small">
+                    <div class="chart-header">
+                        <div>
+                            <h3>Revenue by Category</h3>
+                            <p>Distribution breakdown</p>
+                        </div>
+                    </div>
+                    <div class="chart-body">
+                        <!-- Placeholder: Donut Chart - Revenue Distribution -->
+                        <div class="chart-placeholder donut-chart">
+                            <svg viewBox="0 0 200 200" class="donut-svg">
+                                <circle cx="100" cy="100" r="70" fill="none" stroke="#667eea" stroke-width="30" 
+                                        stroke-dasharray="308 440" transform="rotate(-90 100 100)"/>
+                                <circle cx="100" cy="100" r="70" fill="none" stroke="#f5576c" stroke-width="30" 
+                                        stroke-dasharray="132 440" stroke-dashoffset="-308" transform="rotate(-90 100 100)"/>
+                                <circle cx="100" cy="100" r="70" fill="none" stroke="#4facfe" stroke-width="30" 
+                                        stroke-dasharray="88 440" stroke-dashoffset="-440" transform="rotate(-90 100 100)"/>
+                                <circle cx="100" cy="100" r="70" fill="none" stroke="#f093fb" stroke-width="30" 
+                                        stroke-dasharray="132 440" stroke-dashoffset="-528" transform="rotate(-90 100 100)"/>
+                            </svg>
+                            <div class="donut-center">
+                                <div class="donut-total">₱2.4M</div>
+                                <div class="donut-label">Total</div>
+                            </div>
+                            <div class="donut-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background: #667eea"></span>
+                                    <span>Electronics</span>
+                                    <strong>35%</strong>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background: #f5576c"></span>
+                                    <span>Clothing</span>
+                                    <strong>25%</strong>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background: #4facfe"></span>
+                                    <span>Home</span>
+                                    <strong>20%</strong>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background: #f093fb"></span>
+                                    <span>Others</span>
+                                    <strong>20%</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row 2 -->
+            <div class="charts-row">
+                <!-- Top Products -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <div>
+                            <h3>Top Selling Products</h3>
+                            <p>Best performers this month</p>
+                        </div>
+                        <a href="products.html" class="view-all-link">View All <i class="bx bx-right-arrow-alt"></i></a>
+                    </div>
+                    <div class="chart-body">
+                        <div class="products-list">
+                            <div class="product-item">
+                                <div class="product-info">
+                                    <div class="product-img-placeholder"></div>
+                                    <div>
+                                        <div class="product-name">Premium Wireless Headphones</div>
+                                        <div class="product-category">Electronics</div>
+                                    </div>
+                                </div>
+                                <div class="product-stats">
+                                    <div class="product-sales">1,234 sold</div>
+                                    <div class="product-revenue">₱458,234</div>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 85%"></div>
+                                </div>
+                            </div>
+
+                            <div class="product-item">
+                                <div class="product-info">
+                                    <div class="product-img-placeholder"></div>
+                                    <div>
+                                        <div class="product-name">Smart Watch Pro Series 5</div>
+                                        <div class="product-category">Electronics</div>
+                                    </div>
+                                </div>
+                                <div class="product-stats">
+                                    <div class="product-sales">987 sold</div>
+                                    <div class="product-revenue">₱389,760</div>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 72%"></div>
+                                </div>
+                            </div>
+
+                            <div class="product-item">
+                                <div class="product-info">
+                                    <div class="product-img-placeholder"></div>
+                                    <div>
+                                        <div class="product-name">Premium Cotton T-Shirt</div>
+                                        <div class="product-category">Clothing</div>
+                                    </div>
+                                </div>
+                                <div class="product-stats">
+                                    <div class="product-sales">756 sold</div>
+                                    <div class="product-revenue">₱302,400</div>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 58%"></div>
+                                </div>
+                            </div>
+
+                            <div class="product-item">
+                                <div class="product-info">
+                                    <div class="product-img-placeholder"></div>
+                                    <div>
+                                        <div class="product-name">Organic Skincare Set</div>
+                                        <div class="product-category">Beauty</div>
+                                    </div>
+                                </div>
+                                <div class="product-stats">
+                                    <div class="product-sales">642 sold</div>
+                                    <div class="product-revenue">₱256,800</div>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 48%"></div>
+                                </div>
+                            </div>
+
+                            <div class="product-item">
+                                <div class="product-info">
+                                    <div class="product-img-placeholder"></div>
+                                    <div>
+                                        <div class="product-name">Modern Table Lamp</div>
+                                        <div class="product-category">Home & Garden</div>
+                                    </div>
+                                </div>
+                                <div class="product-stats">
+                                    <div class="product-sales">534 sold</div>
+                                    <div class="product-revenue">₱213,600</div>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 38%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Traffic Sources -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <div>
+                            <h3>Traffic Sources</h3>
+                            <p>Where visitors come from</p>
+                        </div>
+                    </div>
+                    <div class="chart-body">
+                        <div class="traffic-list">
+                            <div class="traffic-item">
+                                <div class="traffic-source">
+                                    <div class="traffic-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+                                        <i class="bx bx-search"></i>
+                                    </div>
+                                    <div>
+                                        <div class="traffic-name">Organic Search</div>
+                                        <div class="traffic-visitors">12,543 visitors</div>
+                                    </div>
+                                </div>
+                                <div class="traffic-percent">42.3%</div>
+                            </div>
+
+                            <div class="traffic-item">
+                                <div class="traffic-source">
+                                    <div class="traffic-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)">
+                                        <i class="bx bxl-facebook-circle"></i>
+                                    </div>
+                                    <div>
+                                        <div class="traffic-name">Social Media</div>
+                                        <div class="traffic-visitors">8,234 visitors</div>
+                                    </div>
+                                </div>
+                                <div class="traffic-percent">27.8%</div>
+                            </div>
+
+                            <div class="traffic-item">
+                                <div class="traffic-source">
+                                    <div class="traffic-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)">
+                                        <i class="bx bx-link"></i>
+                                    </div>
+                                    <div>
+                                        <div class="traffic-name">Direct Traffic</div>
+                                        <div class="traffic-visitors">5,432 visitors</div>
+                                    </div>
+                                </div>
+                                <div class="traffic-percent">18.3%</div>
+                            </div>
+
+                            <div class="traffic-item">
+                                <div class="traffic-source">
+                                    <div class="traffic-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)">
+                                        <i class="bx bx-mail-send"></i>
+                                    </div>
+                                    <div>
+                                        <div class="traffic-name">Email Marketing</div>
+                                        <div class="traffic-visitors">3,421 visitors</div>
+                                    </div>
+                                </div>
+                                <div class="traffic-percent">11.6%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="activity-card">
+                <div class="chart-header">
+                    <div>
+                        <h3>Recent Activity</h3>
+                        <p>Latest system events and updates</p>
+                    </div>
+                </div>
+                <div class="activity-timeline">
+                    <div class="activity-item">
+                        <div class="activity-icon" style="background: #dcfce7; color: #16a34a">
+                            <i class="bx bx-shopping-bag"></i>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">New order received</div>
+                            <div class="activity-desc">Order #ORD-2345 from John Doe - ₱12,450.00</div>
+                            <div class="activity-time">2 minutes ago</div>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-icon" style="background: #dbeafe; color: #1e40af">
+                            <i class="bx bx-user-plus"></i>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">New customer registered</div>
+                            <div class="activity-desc">Maria Santos joined the platform</div>
+                            <div class="activity-time">15 minutes ago</div>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-icon" style="background: #fef3c7; color: #92400e">
+                            <i class="bx bx-package"></i>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">Product stock low</div>
+                            <div class="activity-desc">Premium Wireless Headphones - Only 8 items left</div>
+                            <div class="activity-time">1 hour ago</div>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-icon" style="background: #e0e7ff; color: #4338ca">
+                            <i class="bx bx-star"></i>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">New product review</div>
+                            <div class="activity-desc">5-star review for Smart Watch Pro Series 5</div>
+                            <div class="activity-time">2 hours ago</div>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-icon" style="background: #fee2e2; color: #991b1b">
+                            <i class="bx bx-error-circle"></i>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">Order cancelled</div>
+                            <div class="activity-desc">Order #ORD-2341 cancelled by customer</div>
+                            <div class="activity-time">3 hours ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/analytics.js"></script>
+</body>
+</html>
+
