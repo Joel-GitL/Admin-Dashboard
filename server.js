@@ -1,9 +1,38 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const path = require('path');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 const port = 3000;
+
+// Security Middleware
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            scriptSrc: ["'self'", "'unsafe-inline'", "https://unpkg.com"],
+            styleSrc: ["'self'", "'unsafe-inline'", "https://unpkg.com", "https://fonts.googleapis.com"],
+            fontSrc: ["'self'", "https://fonts.gstatic.com"],
+            imgSrc: ["'self'", "data:"],
+            connectSrc: ["'self'"],
+            objectSrc: ["'none'"],
+            upgradeInsecureRequests: [],
+        },
+    },
+}));
+
+const authLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // Limit each IP to 100 requests per windowMs
+    standardHeaders: true,
+    legacyHeaders: false,
+});
+
+app.use('/api/login', authLimiter);
+app.use('/api/register', authLimiter);
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -12,6 +41,7 @@ app.use(cookieParser());
 // Serve static files
 app.use(express.static(path.join(__dirname)));
 
+const { body, validationResult } = require('express-validator');
 const db = require('./database');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -20,12 +50,16 @@ const saltRounds = 10;
 const jwtSecret = '7dfd6f9f6669113bdbb8373f886bb683d87801d81b5c32882375fcd9';
 
 // API routes
-app.post('/api/register', async (req, res) => {
-    const { username, password } = req.body;
+app.post('/api/register',
+    body('username').isLength({ min: 3 }).trim().escape(),
+    body('password').isLength({ min: 6 }),
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
 
-    if (!username || !password) {
-        return res.status(400).json({ message: 'Username and password are required' });
-    }
+        const { username, password } = req.body;
 
     try {
         const hashedPassword = await bcrypt.hash(password, saltRounds);
@@ -45,12 +79,16 @@ app.post('/api/register', async (req, res) => {
     }
 });
 
-app.post('/api/login', (req, res) => {
-    const { username, password } = req.body;
+app.post('/api/login',
+    body('username').trim().escape(),
+    body('password').notEmpty(),
+    (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
 
-    if (!username || !password) {
-        return res.status(400).json({ message: 'Username and password are required' });
-    }
+        const { username, password } = req.body;
 
     const sql = 'SELECT * FROM users WHERE username = ?';
     db.get(sql, [username], async (err, user) => {
